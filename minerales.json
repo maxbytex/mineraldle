@@ -1,0 +1,29 @@
+[
+  {
+    "nombre": "Cuarzo",
+    "dureza": 7,
+    "sistema": [
+      "Trigonal",
+      "Hexagonal"
+    ],
+    "brillo": [
+      "Vítreo"
+    ],
+    "grupo": [
+      "Tectosilicatos"
+    ]
+  },
+  {
+    "nombre": "Pirita",
+    "dureza": 6,
+    "sistema": [
+      "Cúbico"
+    ],
+    "brillo": [
+      "Metálico"
+    ],
+    "grupo": [
+      "Sulfuros"
+    ]
+  }
+]
