@@ -4,6 +4,7 @@ let mineralDelDia = null;
 let intentos = 0;
 const maxIntentos = 6;
 let minerales = [];
+let cabeceraMostrada = false;
 
 function setIdioma(idioma) {
   fetch(`lang/${idioma}.json`)
@@ -82,25 +83,29 @@ function intentarAdivinar() {
     return;
   }
 
-  intentos++;
-  let html = "<table><tr><th>" + traducciones.propiedades.nombre + "</th><th>" + traducciones.propiedades.dureza + "</th><th>" + traducciones.propiedades.sistema + "</th><th>" + traducciones.propiedades.brillo + "</th><th>" + traducciones.propiedades.grupo + "</th></tr>";
+  let html = "<table>";
 
-html += "<tr>";
-html += `
-  <td class="nombre">
-    <div class="mineral-info">
-      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" class="mineral-icon">
-      <span>${capitalizar(mineral.nombre)}</span>
-    </div>
-  </td>`;
-html += comparar(mineral.dureza, mineralDelDia.dureza);
-html += comparar(mineral.sistema, mineralDelDia.sistema);
-html += comparar(mineral.brillo, mineralDelDia.brillo);
-html += comparar(mineral.grupo, mineralDelDia.grupo);
-html += "</tr></table>";
+  if (!cabeceraMostrada) {
+    html += "<tr><th></th><th>" + (traducciones.propiedades?.dureza || "Dureza") + "</th><th>" + (traducciones.propiedades?.sistema || "Sistema cristalino") + "</th><th>" + (traducciones.propiedades?.brillo || "Brillo") + "</th><th>" + (traducciones.propiedades?.grupo || "Grupo") + "</th></tr>";
+    cabeceraMostrada = true;
+  }
+
+  html += "<tr>";
+  html += `
+    <td class="nombre">
+      <div class="mineral-info">
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" class="mineral-icon">
+      </div>
+    </td>`;
+  html += comparar(mineral.dureza, mineralDelDia.dureza);
+  html += comparar(mineral.sistema, mineralDelDia.sistema);
+  html += comparar(mineral.brillo, mineralDelDia.brillo);
+  html += comparar(mineral.grupo, mineralDelDia.grupo);
+  html += "</tr></table>";
 
   document.getElementById("pistas").innerHTML += html;
 
+  intentos++;
   if (mineral.nombre === mineralDelDia.nombre) {
     document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
   } else if (intentos >= maxIntentos) {
@@ -124,7 +129,6 @@ function comparar(valor, objetivo) {
     clase = "amarillo";
   }
 
-  // Mostramos los valores reales del mineral que se ha intentado adivinar
   return `<td class="${clase}">${val.map(v => capitalizar(v)).join(", ")}</td>`;
 }
 
