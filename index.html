@@ -8,15 +8,21 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <h1 id="titulo"></h1>
+  <h1 id="titulo">Minedle</h1>
+
   <div id="language-selector">
     <button onclick="setIdioma('es')">🇪🇸</button>
     <button onclick="setIdioma('en')">🇬🇧</button>
     <button onclick="setIdioma('ja')">🇯🇵</button>
   </div>
-  <input id="inputMineral" list="listaMinerales" placeholder="" />
-  <datalist id="listaMinerales"></datalist>
-  <button id="btnAdivinar"></button>
+
+  <div class="autocomplete-container">
+    <input id="inputMineral" placeholder="Escribe un mineral..." autocomplete="off" />
+    <ul id="autocomplete-list" class="autocomplete-items"></ul>
+  </div>
+
+  <button id="btnAdivinar">Adivinar</button>
+
   <div id="resultado"></div>
   <div id="pistas"></div>
 </body>
