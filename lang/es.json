@@ -1,0 +1,15 @@
+{
+  "titulo": "Adivina el Mineral",
+  "input_placeholder": "Escribe un mineral...",
+  "boton_adivinar": "Adivinar",
+  "propiedades": {
+    "dureza": "Dureza",
+    "sistema": "Sistema cristalino",
+    "brillo": "Brillo",
+    "grupo": "Grupo"
+  },
+  "mensajes": {
+    "correcto": "¡Correcto! Has adivinado el mineral del día:",
+    "fallo": "Te has quedado sin intentos. Era:"
+  }
+}

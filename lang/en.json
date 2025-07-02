@@ -1,0 +1,15 @@
+{
+  "titulo": "Guess the Mineral",
+  "input_placeholder": "Type a mineral...",
+  "boton_adivinar": "Guess",
+  "propiedades": {
+    "dureza": "Hardness",
+    "sistema": "Crystal system",
+    "brillo": "Luster",
+    "grupo": "Group"
+  },
+  "mensajes": {
+    "correcto": "Correct! The mineral of the day was:",
+    "fallo": "You're out of guesses. It was:"
+  }
+}
