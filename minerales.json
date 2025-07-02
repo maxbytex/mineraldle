@@ -17,7 +17,7 @@
     "nombre": "Pirita",
     "dureza": 6,
     "sistema": [
-      "Cúbico"
+      "Cúbico", "Hexagonal"
     ],
     "brillo": [
       "Metálico"
