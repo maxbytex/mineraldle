@@ -76,11 +76,16 @@ input {
 .tabla-resultados td {
   width: 80px;
   height: 80px;
+  background-color: #2a2a2a;
+  color: white;
+  border: 3px solid #000;
   border-radius: 10px;
   text-align: center;
   vertical-align: middle;
-  font-size: 0.85em;
+  font-size: clamp(10px, 1.2vw, 16px);
   padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Nombre + Imagen en una sola celda */
@@ -98,13 +103,20 @@ input {
 }
 
 .cuadro-icono img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 4px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #000;
   background-color: #fff;
-  border: 2px solid #aaa;
+  margin-bottom: 2px;
+}
+
+.cuadro-icono span {
+  font-size: clamp(10px, 1vw, 14px);
+  color: #fff;
+  text-align: center;
+  line-height: 1;
 }
 
 /* Colores de comparación */
@@ -122,6 +134,7 @@ input {
   background-color: #f9a825;
   color: #000;
 }
+
 
 /* Autocomplete */
 .autocomplete-container {
