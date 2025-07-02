@@ -1,4 +1,3 @@
-
 let traducciones = {};
 let idiomaActual = "es";
 let mineralDelDia = null;
@@ -18,9 +17,9 @@ function setIdioma(idioma) {
 }
 
 function aplicarTraducciones() {
-  document.getElementById("titulo").innerText = traducciones.titulo;
-  document.getElementById("inputMineral").placeholder = traducciones.input_placeholder;
-  document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar;
+  document.getElementById("titulo").innerText = traducciones.titulo || "Minedle";
+  document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
+  document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,10 +33,46 @@ document.addEventListener("DOMContentLoaded", () => {
       const hoy = new Date();
       const diaDelAno = Math.floor((hoy - new Date(hoy.getFullYear(), 0, 0)) / 86400000);
       mineralDelDia = minerales[diaDelAno % minerales.length];
+      iniciarAutocompletado();
     });
 
   document.getElementById("btnAdivinar").addEventListener("click", intentarAdivinar);
 });
+
+function iniciarAutocompletado() {
+  const input = document.getElementById("inputMineral");
+  const list = document.getElementById("autocomplete-list");
+
+  input.addEventListener("input", function () {
+    const val = this.value.toLowerCase();
+    list.innerHTML = "";
+    if (!val) return;
+
+    const coincidencias = minerales.filter(m =>
+      m.nombre.toLowerCase().includes(val)
+    );
+
+    coincidencias.forEach(mineral => {
+      const li = document.createElement("li");
+      li.textContent = mineral.nombre;
+      li.addEventListener("click", () => {
+        input.value = mineral.nombre;
+        list.innerHTML = "";
+      });
+      list.appendChild(li);
+    });
+  });
+
+  input.addEventListener("focus", function () {
+    input.dispatchEvent(new Event('input'));
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".autocomplete-container")) {
+      list.innerHTML = "";
+    }
+  });
+}
 
 function intentarAdivinar() {
   const input = document.getElementById("inputMineral").value.trim().toLowerCase();
@@ -48,7 +83,7 @@ function intentarAdivinar() {
   }
 
   intentos++;
-  let html = "<table><tr><th>" + traducciones.propiedades.dureza + "</th><th>" + traducciones.propiedades.sistema + "</th><th>" + traducciones.propiedades.brillo + "</th><th>" + traducciones.propiedades.grupo + "</th></tr>";
+  let html = "<table><tr><th>Dureza</th><th>Sistema</th><th>Brillo</th><th>Grupo</th></tr>";
   html += "<tr>";
   html += comparar(mineral.dureza, mineralDelDia.dureza);
   html += comparar(mineral.sistema, mineralDelDia.sistema);
@@ -59,9 +94,9 @@ function intentarAdivinar() {
   document.getElementById("pistas").innerHTML += html;
 
   if (mineral.nombre === mineralDelDia.nombre) {
-    document.getElementById("resultado").innerText = traducciones.mensajes.correcto + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
   } else if (intentos >= maxIntentos) {
-    document.getElementById("resultado").innerText = traducciones.mensajes.fallo + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
   }
 }
 
@@ -72,7 +107,9 @@ function comparar(valor, objetivo) {
   const obj = Array.isArray(objetivo)
     ? objetivo.map(o => String(o).toLowerCase())
     : [String(objetivo).toLowerCase()];
+
   const coincidencias = val.filter(v => obj.includes(v));
+
   if (coincidencias.length === obj.length && val.length === obj.length) {
     return '<td class="verde">Correcto</td>';
   } else if (coincidencias.length > 0) {
