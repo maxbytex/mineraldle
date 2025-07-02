@@ -66,8 +66,12 @@ function intentarAdivinar() {
 }
 
 function comparar(valor, objetivo) {
-  const val = Array.isArray(valor) ? valor.map(v => v.toLowerCase()) : [valor.toLowerCase()];
-  const obj = Array.isArray(objetivo) ? objetivo.map(o => o.toLowerCase()) : [objetivo.toLowerCase()];
+  const val = Array.isArray(valor)
+    ? valor.map(v => String(v).toLowerCase())
+    : [String(valor).toLowerCase()];
+  const obj = Array.isArray(objetivo)
+    ? objetivo.map(o => String(o).toLowerCase())
+    : [String(objetivo).toLowerCase()];
   const coincidencias = val.filter(v => obj.includes(v));
   if (coincidencias.length === obj.length && val.length === obj.length) {
     return '<td class="verde">Correcto</td>';
