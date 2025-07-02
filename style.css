@@ -53,22 +53,61 @@ input {
   max-width: 600px;
 }
 
-table {
+/* NUEVO: Estilo general para la tabla de resultados */
+.tabla-resultados {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 6px;
   font-size: 0.95em;
-  margin-bottom: 1em;
-  background-color: #2a2a2a;
-  border-radius: 8px;
-  overflow: hidden;
+  margin: 2em 0;
 }
 
-td, th {
-  border: 1px solid #3a3a3a;
-  padding: 0.75em 1em;
+/* Cabecera (solo aparece una vez) */
+.tabla-resultados thead th {
+  color: #ccc;
+  font-size: 0.85em;
+  font-weight: normal;
   text-align: center;
+  padding-bottom: 0.3em;
+  border: none;
 }
 
+/* Celdas */
+.tabla-resultados td {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.85em;
+  padding: 0;
+}
+
+/* Nombre + Imagen en una sola celda */
+.imagen-nombre {
+  padding: 0;
+}
+
+.cuadro-icono {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+}
+
+.cuadro-icono img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background-color: #fff;
+  border: 2px solid #aaa;
+}
+
+/* Colores de comparación */
 .verde {
   background-color: #2e7d32;
   color: #fff;
@@ -84,22 +123,7 @@ td, th {
   color: #000;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 1em;
-  border-radius: 8px;
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.5em;
-  }
-  table {
-    font-size: 0.85em;
-  }
-  
-
+/* Autocomplete */
 .autocomplete-container {
   position: relative;
   width: 100%;
@@ -158,22 +182,21 @@ img {
   padding: 0 !important;
 }
 
-
-.mineral-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.mineral-icon {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  background-color: #f9f9f9;
-}
-
-
-
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  .tabla-resultados td {
+    width: 60px;
+    height: 60px;
+    font-size: 0.75em;
+  }
+  .cuadro-icono {
+    width: 60px;
+    height: 60px;
+  }
+  .cuadro-icono img {
+    width: 30px;
+    height: 30px;
+  }
 }

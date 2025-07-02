@@ -83,25 +83,39 @@ function intentarAdivinar() {
     return;
   }
 
-  let html = "<table>";
+  let html = "";
 
   if (!cabeceraMostrada) {
-    html += "<tr><th></th><th>" + (traducciones.propiedades?.dureza || "Dureza") + "</th><th>" + (traducciones.propiedades?.sistema || "Sistema cristalino") + "</th><th>" + (traducciones.propiedades?.brillo || "Brillo") + "</th><th>" + (traducciones.propiedades?.grupo || "Grupo") + "</th></tr>";
+    html += `
+    <table class="tabla-resultados">
+      <thead>
+        <tr>
+          <th></th>
+          <th>${traducciones.propiedades.dureza}</th>
+          <th>${traducciones.propiedades.sistema}</th>
+          <th>${traducciones.propiedades.brillo}</th>
+          <th>${traducciones.propiedades.grupo}</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-cuerpo">
+    `;
     cabeceraMostrada = true;
+  } else {
+    html += `<table class="tabla-resultados"><tbody>`;
   }
 
-  html += "<tr>";
-  html += `
-    <td class="nombre">
-      <div class="mineral-info">
-        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" class="mineral-icon">
+  html += `<tr>
+    <td class="imagen-nombre">
+      <div class="cuadro-icono">
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
+        <span>${capitalizar(mineral.nombre)}</span>
       </div>
     </td>`;
   html += comparar(mineral.dureza, mineralDelDia.dureza);
   html += comparar(mineral.sistema, mineralDelDia.sistema);
   html += comparar(mineral.brillo, mineralDelDia.brillo);
   html += comparar(mineral.grupo, mineralDelDia.grupo);
-  html += "</tr></table>";
+  html += "</tr></tbody></table>";
 
   document.getElementById("pistas").innerHTML += html;
 
