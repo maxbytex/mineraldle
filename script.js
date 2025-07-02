@@ -101,16 +101,16 @@ function intentarAdivinar() {
 }
 
 function comparar(valor, objetivo) {
-  const val = Array.isArray(valor)
-    ? valor.map(v => String(v).toLowerCase())
-    : [String(valor).toLowerCase()];
-  const obj = Array.isArray(objetivo)
-    ? objetivo.map(o => String(o).toLowerCase())
-    : [String(objetivo).toLowerCase()];
+  const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
+  const obj = Array.isArray(objetivo) ? objetivo.map(o => String(o).toLowerCase()) : [String(objetivo).toLowerCase()];
 
   const coincidencias = val.filter(v => obj.includes(v));
 
-  if (coincidencias.length === obj.length && val.length === obj.length) {
+  const valSet = new Set(val);
+  const objSet = new Set(obj);
+  const conjuntosIguales = valSet.size === objSet.size && [...valSet].every(v => objSet.has(v));
+
+  if (conjuntosIguales) {
     return '<td class="verde">Correcto</td>';
   } else if (coincidencias.length > 0) {
     return '<td class="amarillo">Parcialmente correcto</td>';
