@@ -17,7 +17,7 @@ function setIdioma(idioma) {
 }
 
 function aplicarTraducciones() {
-  document.getElementById("titulo").innerText = traducciones.titulo || "Minedle";
+  document.getElementById("titulo").innerText = traducciones.titulo || "Mineraldle";
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
 }
@@ -83,13 +83,21 @@ function intentarAdivinar() {
   }
 
   intentos++;
-  let html = "<table><tr><th>Dureza</th><th>Sistema</th><th>Brillo</th><th>Grupo</th></tr>";
-  html += "<tr>";
-  html += comparar(mineral.dureza, mineralDelDia.dureza);
-  html += comparar(mineral.sistema, mineralDelDia.sistema);
-  html += comparar(mineral.brillo, mineralDelDia.brillo);
-  html += comparar(mineral.grupo, mineralDelDia.grupo);
-  html += "</tr></table>";
+  let html = "<table><tr><th>" + traducciones.propiedades.nombre + "</th><th>" + traducciones.propiedades.dureza + "</th><th>" + traducciones.propiedades.sistema + "</th><th>" + traducciones.propiedades.brillo + "</th><th>" + traducciones.propiedades.grupo + "</th></tr>";
+
+html += "<tr>";
+html += `
+  <td class="nombre">
+    <div class="mineral-info">
+      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" class="mineral-icon">
+      <span>${capitalizar(mineral.nombre)}</span>
+    </div>
+  </td>`;
+html += comparar(mineral.dureza, mineralDelDia.dureza);
+html += comparar(mineral.sistema, mineralDelDia.sistema);
+html += comparar(mineral.brillo, mineralDelDia.brillo);
+html += comparar(mineral.grupo, mineralDelDia.grupo);
+html += "</tr></table>";
 
   document.getElementById("pistas").innerHTML += html;
 
@@ -103,18 +111,23 @@ function intentarAdivinar() {
 function comparar(valor, objetivo) {
   const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
   const obj = Array.isArray(objetivo) ? objetivo.map(o => String(o).toLowerCase()) : [String(objetivo).toLowerCase()];
-
   const coincidencias = val.filter(v => obj.includes(v));
 
   const valSet = new Set(val);
   const objSet = new Set(obj);
   const conjuntosIguales = valSet.size === objSet.size && [...valSet].every(v => objSet.has(v));
 
+  let clase = "rojo";
   if (conjuntosIguales) {
-    return '<td class="verde">Correcto</td>';
+    clase = "verde";
   } else if (coincidencias.length > 0) {
-    return '<td class="amarillo">Parcialmente correcto</td>';
-  } else {
-    return '<td class="rojo">No coincide</td>';
+    clase = "amarillo";
   }
+
+  // Mostramos los valores reales del mineral que se ha intentado adivinar
+  return `<td class="${clase}">${val.map(v => capitalizar(v)).join(", ")}</td>`;
+}
+
+function capitalizar(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
