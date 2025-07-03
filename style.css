@@ -76,7 +76,7 @@ input {
 /* Cabecera (solo aparece una vez) */
 .tabla-resultados thead th {
   color: #ccc;
-  font-size: 0.85em;
+  font-size: 1em;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
@@ -98,7 +98,7 @@ input {
   border-radius: 10px;
   text-align: center;
   vertical-align: middle;
-  font-size: clamp(10px, 1.2vw, 16px);
+  font-size: clamp(14px, 2vw, 26px);
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -217,7 +217,7 @@ td.arrow-down .flip-card-back::before {
   bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.6em;
+  font-size: 0.8em;
   color: #fff;
   white-space: nowrap;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
@@ -281,6 +281,7 @@ td.arrow-down .flip-card-back::before {
   cursor: pointer;
   border-bottom: 1px solid #eee;
   transition: background 0.2s ease;
+  margin-bottom: 8px;
 }
 
 .autocomplete-items li:hover {
@@ -289,6 +290,7 @@ td.arrow-down .flip-card-back::before {
 
 .autocomplete-items li:last-child {
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 #autocomplete-list,
