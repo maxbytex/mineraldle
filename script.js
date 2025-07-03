@@ -110,7 +110,8 @@ function intentarAdivinar() {
   fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
   fila.appendChild(crearFlipCell(mineral.densidad, compararClase(mineral.densidad, mineralDelDia.densidad)));
 
-  document.getElementById("tabla-cuerpo").appendChild(fila);
+  const cuerpo = document.getElementById("tabla-cuerpo");
+  cuerpo.insertBefore(fila, cuerpo.firstChild);
   revealRow(fila);
 
   intentos++;
