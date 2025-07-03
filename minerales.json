@@ -1,29 +1,110 @@
 [
   {
     "nombre": "Cuarzo",
+    "grupo": ["Tectosilicatos"],
+    "sistema": ["Trigonal", "Hexagonal"],
+    "color": ["Incoloro", "Blanco", "Morado"],
+    "brillo": ["Vítreo"],
     "dureza": 7,
-    "sistema": [
-      "Trigonal",
-      "Hexagonal"
-    ],
-    "brillo": [
-      "Vítreo","Metálico"
-    ],
-    "grupo": [
-      "Tectosilicatos"
-    ]
+    "densidad": 2.65
   },
   {
     "nombre": "Pirita",
+    "grupo": ["Sulfuros"],
+    "sistema": ["Cúbico", "Hexagonal"],
+    "color": ["Dorado"],
+    "brillo": ["Metálico"],
     "dureza": 6,
-    "sistema": [
-      "Cúbico", "Hexagonal"
-    ],
-    "brillo": [
-      "Metálico"
-    ],
-    "grupo": [
-      "Sulfuros"
-    ]
+    "densidad": 5.0
+  },
+  {
+    "nombre": "Calcita",
+    "grupo": ["Carbonatos"],
+    "sistema": ["Trigonal"],
+    "color": ["Blanco", "Incoloro"],
+    "brillo": ["Vítreo", "Nacarado"],
+    "dureza": 3,
+    "densidad": 2.71
+  },
+  {
+    "nombre": "Feldespato",
+    "grupo": ["Tectosilicatos"],
+    "sistema": ["Monoclínico", "Triclínico"],
+    "color": ["Rosa", "Blanco"],
+    "brillo": ["Vítreo", "Perlado"],
+    "dureza": 6,
+    "densidad": 2.55
+  },
+  {
+    "nombre": "Galena",
+    "grupo": ["Sulfuros"],
+    "sistema": ["Cúbico"],
+    "color": ["Gris", "Plata"],
+    "brillo": ["Metálico"],
+    "dureza": 2,
+    "densidad": 7.6
+  },
+  {
+    "nombre": "Malaquita",
+    "grupo": ["Carbonatos"],
+    "sistema": ["Monoclínico"],
+    "color": ["Verde"],
+    "brillo": ["Vítreo", "Terroso"],
+    "dureza": 3.5,
+    "densidad": 4.0
+  },
+  {
+    "nombre": "Hematita",
+    "grupo": ["Óxidos"],
+    "sistema": ["Trigonal"],
+    "color": ["Rojo", "Negro"],
+    "brillo": ["Metálico", "Terroso"],
+    "dureza": 6,
+    "densidad": 5.3
+  },
+  {
+    "nombre": "Fluorita",
+    "grupo": ["Haluros"],
+    "sistema": ["Cúbico"],
+    "color": ["Violeta", "Verde"],
+    "brillo": ["Vítreo"],
+    "dureza": 4,
+    "densidad": 3.18
+  },
+  {
+    "nombre": "Magnetita",
+    "grupo": ["Óxidos"],
+    "sistema": ["Cúbico"],
+    "color": ["Negro"],
+    "brillo": ["Metálico"],
+    "dureza": 5.5,
+    "densidad": 5.17
+  },
+  {
+    "nombre": "Azurita",
+    "grupo": ["Carbonatos"],
+    "sistema": ["Monoclínico"],
+    "color": ["Azul"],
+    "brillo": ["Vítreo"],
+    "dureza": 3.5,
+    "densidad": 3.77
+  },
+  {
+    "nombre": "Olivino",
+    "grupo": ["Nesosilicatos"],
+    "sistema": ["Ortorrómbico"],
+    "color": ["Verde", "Amarillo"],
+    "brillo": ["Vítreo"],
+    "dureza": 6.5,
+    "densidad": 3.33
+  },
+  {
+    "nombre": "Crisocola",
+    "grupo": ["Filosilicatos"],
+    "sistema": ["Ortorrómbico"],
+    "color": ["Azul", "Verde"],
+    "brillo": ["Mate"],
+    "dureza": 2.5,
+    "densidad": 2.12
   }
 ]

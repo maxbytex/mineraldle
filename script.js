@@ -21,6 +21,14 @@ function aplicarTraducciones() {
   document.getElementById("titulo").innerText = traducciones.titulo || "Mineraldle";
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
+  if (traducciones.propiedades) {
+    document.getElementById("th-grupo").innerText = traducciones.propiedades.grupo || "Grupo";
+    document.getElementById("th-sistema").innerText = traducciones.propiedades.sistema || "Sistema";
+    document.getElementById("th-color").innerText = traducciones.propiedades.color || "Color";
+    document.getElementById("th-brillo").innerText = traducciones.propiedades.brillo || "Brillo";
+    document.getElementById("th-dureza").innerText = traducciones.propiedades.dureza || "Dureza";
+    document.getElementById("th-densidad").innerText = traducciones.propiedades.densidad || "Densidad";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -95,10 +103,12 @@ function intentarAdivinar() {
   );
   fila.appendChild(celdaNombre);
 
-  fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
-  fila.appendChild(crearFlipCell(mineral.sistema.join(", "), compararClase(mineral.sistema, mineralDelDia.sistema)));
-  fila.appendChild(crearFlipCell(mineral.brillo.join(", "), compararClase(mineral.brillo, mineralDelDia.brillo)));
   fila.appendChild(crearFlipCell(mineral.grupo.join(", "), compararClase(mineral.grupo, mineralDelDia.grupo)));
+  fila.appendChild(crearFlipCell(mineral.sistema.join(", "), compararClase(mineral.sistema, mineralDelDia.sistema)));
+  fila.appendChild(crearFlipCell(mineral.color.join(", "), compararClase(mineral.color, mineralDelDia.color)));
+  fila.appendChild(crearFlipCell(mineral.brillo.join(", "), compararClase(mineral.brillo, mineralDelDia.brillo)));
+  fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
+  fila.appendChild(crearFlipCell(mineral.densidad, compararClase(mineral.densidad, mineralDelDia.densidad)));
 
   document.getElementById("tabla-cuerpo").appendChild(fila);
   revealRow(fila);
