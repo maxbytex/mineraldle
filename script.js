@@ -6,6 +6,7 @@ const maxIntentos = 10;
 let juegoTerminado = false;
 let minerales = [];
 let cabeceraMostrada = false;
+let ultimoResultado = null;
 
 function updateCounter() {
   const valor = maxIntentos - intentos;
@@ -19,6 +20,7 @@ function deshabilitarJuego() {
 
 function mostrarModal(gano) {
   const modal = document.getElementById("modal");
+  ultimoResultado = gano;
   document.getElementById("modal-title").innerText = gano
     ? traducciones.mensajes?.ganaste_titulo || "YOU WON!"
     : traducciones.mensajes?.perdiste_titulo || "GAME OVER";
@@ -75,6 +77,8 @@ function aplicarTraducciones() {
   document.getElementById("counter-label").innerText =
     (traducciones.mensajes?.intentos_restantes || "Intentos:");
   updateCounter();
+  actualizarTraduccionesTabla();
+  actualizarModalTraducciones();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -154,7 +158,8 @@ async function intentarAdivinar() {
         <span>${traducirValor(mineral.nombre)}</span>
      </div>`,
     "",
-    "imagen-nombre"
+    "imagen-nombre",
+    mineral.nombre
   );
   const spanNum = document.createElement("span");
   spanNum.className = "numero-intento";
@@ -165,29 +170,51 @@ async function intentarAdivinar() {
   fila.appendChild(
     crearFlipCell(
       traducirLista(mineral.grupo).join(", "),
-      compararClase(mineral.grupo, mineralDelDia.grupo)
+      compararClase(mineral.grupo, mineralDelDia.grupo),
+      "",
+      mineral.grupo
     )
   );
   fila.appendChild(
     crearFlipCell(
       traducirLista(mineral.sistema).join(", "),
-      compararClase(mineral.sistema, mineralDelDia.sistema)
+      compararClase(mineral.sistema, mineralDelDia.sistema),
+      "",
+      mineral.sistema
     )
   );
   fila.appendChild(
     crearFlipCell(
       traducirLista(mineral.color).join(", "),
-      compararClase(mineral.color, mineralDelDia.color)
+      compararClase(mineral.color, mineralDelDia.color),
+      "",
+      mineral.color
     )
   );
   fila.appendChild(
     crearFlipCell(
       traducirLista(mineral.brillo).join(", "),
-      compararClase(mineral.brillo, mineralDelDia.brillo)
+      compararClase(mineral.brillo, mineralDelDia.brillo),
+      "",
+      mineral.brillo
     )
   );
-  fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
-  fila.appendChild(crearFlipCell(mineral.densidad, compararClase(mineral.densidad, mineralDelDia.densidad)));
+  fila.appendChild(
+    crearFlipCell(
+      mineral.dureza,
+      compararClase(mineral.dureza, mineralDelDia.dureza),
+      "",
+      mineral.dureza
+    )
+  );
+  fila.appendChild(
+    crearFlipCell(
+      mineral.densidad,
+      compararClase(mineral.densidad, mineralDelDia.densidad),
+      "",
+      mineral.densidad
+    )
+  );
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
@@ -266,9 +293,13 @@ function capitalizar(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function crearFlipCell(contenido, colorClase = "", extra = "") {
+function crearFlipCell(contenido, colorClase = "", extra = "", valorOriginal = null) {
   const td = document.createElement("td");
   td.className = `flip-card ${extra}`.trim();
+
+  if (valorOriginal !== null) {
+    td.dataset.original = JSON.stringify(valorOriginal);
+  }
 
   const inner = document.createElement("div");
   inner.className = "flip-card-inner";
@@ -300,4 +331,44 @@ function revealRow(fila) {
       }, idx * 500);
     });
   });
+}
+
+function actualizarTraduccionesTabla() {
+  const filas = document.querySelectorAll('#tabla-cuerpo tr');
+  filas.forEach(fila => {
+    const celdas = fila.querySelectorAll('td');
+    celdas.forEach(td => {
+      if (!td.dataset.original) return;
+      const valor = JSON.parse(td.dataset.original);
+      const back = td.querySelector('.flip-card-back');
+      if (!back) return;
+
+      if (td.classList.contains('imagen-nombre')) {
+        const img = back.querySelector('img');
+        const span = back.querySelector('span');
+        if (img) img.alt = traducirValor(valor);
+        if (span) span.textContent = traducirValor(valor);
+      } else {
+        const nuevo = Array.isArray(valor)
+          ? traducirLista(valor).join(', ')
+          : traducirValor(valor);
+        back.innerHTML = nuevo;
+      }
+    });
+  });
+}
+
+function actualizarModalTraducciones() {
+  const modal = document.getElementById('modal');
+  if (modal.classList.contains('hidden') || ultimoResultado === null) return;
+  document.getElementById('modal-title').innerText = ultimoResultado
+    ? traducciones.mensajes?.ganaste_titulo || 'YOU WON!'
+    : traducciones.mensajes?.perdiste_titulo || 'GAME OVER';
+  document.getElementById('modal-mineral').innerText =
+    (traducciones.mensajes?.mineral_era || 'El mineral era:') +
+    ' ' +
+    traducirValor(mineralDelDia.nombre);
+  document.getElementById('modal-img').alt = traducirValor(mineralDelDia.nombre);
+  document.getElementById('modal-intentos').innerText =
+    (traducciones.mensajes?.intentos || 'Intentos:') + ' ' + intentos;
 }
