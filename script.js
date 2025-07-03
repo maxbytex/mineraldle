@@ -85,7 +85,38 @@ function intentarAdivinar() {
 
   const fila = document.createElement("tr");
 
-  fila.innerHTML += `
+  fila.innerHTML = `
+    <td class="imagen-nombre">
+      <div class="cuadro-icono">
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
+        <span>${capitalizar(mineral.nombre)}</span>
+      </div>
+    </td>
+    ${comparar(mineral.dureza, mineralDelDia.dureza)}
+    ${comparar(mineral.sistema, mineralDelDia.sistema)}
+    ${comparar(mineral.brillo, mineralDelDia.brillo)}
+    ${comparar(mineral.grupo, mineralDelDia.grupo)}
+  `;
+
+  document.getElementById("tabla-cuerpo").appendChild(fila);
+
+  intentos++;
+  if (mineral.nombre === mineralDelDia.nombre) {
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
+  } else if (intentos >= maxIntentos) {
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
+  }
+}function intentarAdivinar() {
+  const input = document.getElementById("inputMineral").value.trim().toLowerCase();
+  const mineral = minerales.find(m => m.nombre.toLowerCase() === input);
+  if (!mineral) {
+    alert("Mineral no encontrado en la base de datos.");
+    return;
+  }
+
+  const fila = document.createElement("tr");
+
+  fila.innerHTML = `
     <td class="imagen-nombre">
       <div class="cuadro-icono">
         <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
