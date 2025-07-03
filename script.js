@@ -92,10 +92,10 @@ function intentarAdivinar() {
         <span>${capitalizar(mineral.nombre)}</span>
       </div>
     </td>
-    ${comparar(mineral.dureza, mineralDelDia.dureza)}
-    ${comparar(mineral.sistema, mineralDelDia.sistema)}
-    ${comparar(mineral.brillo, mineralDelDia.brillo)}
-    ${comparar(mineral.grupo, mineralDelDia.grupo)}
+    <td class="${compararClase(mineral.dureza, mineralDelDia.dureza)}">${mineral.dureza}</td>
+    <td class="${compararClase(mineral.sistema, mineralDelDia.sistema)}">${mineral.sistema.join(", ")}</td>
+    <td class="${compararClase(mineral.brillo, mineralDelDia.brillo)}">${mineral.brillo.join(", ")}</td>
+    <td class="${compararClase(mineral.grupo, mineralDelDia.grupo)}">${mineral.grupo.join(", ")}</td>
   `;
 
   document.getElementById("tabla-cuerpo").appendChild(fila);
@@ -106,38 +106,27 @@ function intentarAdivinar() {
   } else if (intentos >= maxIntentos) {
     document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
   }
-}function intentarAdivinar() {
-  const input = document.getElementById("inputMineral").value.trim().toLowerCase();
-  const mineral = minerales.find(m => m.nombre.toLowerCase() === input);
-  if (!mineral) {
-    alert("Mineral no encontrado en la base de datos.");
-    return;
-  }
-
-  const fila = document.createElement("tr");
-
-fila.innerHTML = `
-  <td class="imagen-nombre">
-    <div class="cuadro-icono">
-      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
-      <span>${capitalizar(mineral.nombre)}</span>
-    </div>
-  </td>
-  ${comparar(mineral.dureza, mineralDelDia.dureza)}
-  ${comparar(mineral.sistema, mineralDelDia.sistema)}
-  ${comparar(mineral.brillo, mineralDelDia.brillo)}
-  ${comparar(mineral.grupo, mineralDelDia.grupo)}
-`;
-
-document.getElementById("tabla-cuerpo").appendChild(fila);
-
-  intentos++;
-  if (mineral.nombre === mineralDelDia.nombre) {
-    document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
-  } else if (intentos >= maxIntentos) {
-    document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
-  }
 }
+
+
+
+
+function compararClase(valor, objetivo) {
+  const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
+  const obj = Array.isArray(objetivo) ? objetivo.map(o => String(o).toLowerCase()) : [String(objetivo).toLowerCase()];
+  const coincidencias = val.filter(v => obj.includes(v));
+
+  const valSet = new Set(val);
+  const objSet = new Set(obj);
+  const conjuntosIguales = valSet.size === objSet.size && [...valSet].every(v => objSet.has(v));
+
+  if (conjuntosIguales) return "verde";
+  else if (coincidencias.length > 0) return "amarillo";
+  else return "rojo";
+}
+
+
+
 
 function comparar(valor, objetivo) {
   const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
