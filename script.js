@@ -84,20 +84,27 @@ function intentarAdivinar() {
   }
 
   const fila = document.createElement("tr");
+
   fila.innerHTML = `
-    ${comparar(mineral.dureza, mineralDelDia.dureza)}
-    ${comparar(mineral.sistema, mineralDelDia.sistema)}
-    ${comparar(mineral.brillo, mineralDelDia.brillo)}
-    ${comparar(mineral.grupo, mineralDelDia.grupo)}
+    <td class="imagen-nombre">
+      <div class="cuadro-icono">
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
+        <span>${capitalizar(mineral.nombre)}</span>
+      </div>
+    </td>
+    <td class="${compararClase(mineral.dureza, mineralDelDia.dureza)}">${mineral.dureza}</td>
+    <td class="${compararClase(mineral.sistema, mineralDelDia.sistema)}">${mineral.sistema.join(", ")}</td>
+    <td class="${compararClase(mineral.brillo, mineralDelDia.brillo)}">${mineral.brillo.join(", ")}</td>
+    <td class="${compararClase(mineral.grupo, mineralDelDia.grupo)}">${mineral.grupo.join(", ")}</td>
   `;
 
-  document.getElementById("pistas").appendChild(fila);
+  document.getElementById("tabla-cuerpo").appendChild(fila);
 
   intentos++;
   if (mineral.nombre === mineralDelDia.nombre) {
-    document.getElementById("resultado").innerText = traducciones.mensajes.correcto + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
   } else if (intentos >= maxIntentos) {
-    document.getElementById("resultado").innerText = traducciones.mensajes.fallo + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
   }
 }
 

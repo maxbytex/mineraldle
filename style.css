@@ -226,18 +226,5 @@ input {
 
 
 
-  table {
-  border-collapse: collapse;
-  margin-top: 2em;
-  width: 100%;
-  max-width: 600px;
-}
-
-td, th {
-  text-align: center;
-  padding: 0.75em;
-  border: 1px solid #444;
-}
-
-
+  
 }

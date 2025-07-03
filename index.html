@@ -3,33 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minedle</title>
+  <title>Mineraldle</title>
+  <link rel="icon" type="image/png" href="screen/gem.png">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
+  <img src="screen/main_logo.png" alt="Logo Minedle" id="main-logo">
   <h1 id="titulo">Mineraldle</h1>
+
   <div id="language-selector">
     <button onclick="setIdioma('es')">🇪🇸</button>
     <button onclick="setIdioma('en')">🇬🇧</button>
     <button onclick="setIdioma('ja')">🇯🇵</button>
   </div>
 
-  <input id="inputMineral" placeholder="Escribe un mineral..." />
+  <div class="autocomplete-container">
+  <input id="inputMineral" placeholder="Escribe un mineral..." autocomplete="off" />
+  <ul id="autocomplete-list" class="autocomplete-items"></ul>
+</div>
+
   <button id="btnAdivinar">Adivinar</button>
 
-  <div id="resultado"></div>
+  <div id="contenedor-tabla">
+  <table class="tabla-resultados" id="tablaResultados">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Dureza</th>
+      <th>Sistema</th>
+      <th>Brillo</th>
+      <th>Grupo</th>
+    </tr>
+  </thead>
+  <tbody id="tabla-cuerpo">
+  </tbody>
+</table>
+</div>
 
-  <table class="tabla-resultados">
-    <thead>
-      <tr>
-        <th>Dureza</th>
-        <th>Sistema</th>
-        <th>Brillo</th>
-        <th>Grupo</th>
-      </tr>
-    </thead>
-    <tbody id="pistas"></tbody>
-  </table>
+  <div id="resultado"></div>
+  <div id="pistas"></div>
 </body>
 </html>
