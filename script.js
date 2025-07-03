@@ -134,7 +134,7 @@ function iniciarAutocompletado() {
 }
 
 async function intentarAdivinar() {
-  if (juegoTerminado) return;
+  if (juegoTerminado || intentos >= maxIntentos) return;
   const input = document.getElementById("inputMineral").value.trim().toLowerCase();
   const mineral = minerales.find(m => m.nombre.toLowerCase() === input);
   if (!mineral) {
@@ -142,10 +142,15 @@ async function intentarAdivinar() {
     return;
   }
 
+  intentos++;
+  updateCounter();
+  const numeroIntento = intentos;
+
   const fila = document.createElement("tr");
 
   const celdaNombre = crearFlipCell(
     `<div class="cuadro-icono">
+        <span class="numero-intento">#${numeroIntento}</span>
         <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
         <span>${traducirValor(mineral.nombre)}</span>
      </div>`,
@@ -185,8 +190,6 @@ async function intentarAdivinar() {
   cuerpo.insertBefore(fila, cuerpo.firstChild);
   await revealRow(fila);
 
-  intentos++;
-  updateCounter();
   const gano = mineral.nombre === mineralDelDia.nombre;
   if (gano || intentos >= maxIntentos) {
     juegoTerminado = true;
