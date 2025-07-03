@@ -371,31 +371,30 @@ function actualizarTraduccionesTabla() {
 }
 
 function ajustarTextoCeldas() {
-  const spans = document.querySelectorAll('.cuadro-icono span');
-  spans.forEach(span => {
-    span.style.fontSize = '';
-    const cont = span.parentElement;
-    if (!cont) return;
-    const max = cont.clientWidth - 4;
-    let size = parseFloat(getComputedStyle(span).fontSize);
-    while (span.scrollWidth > max && size > 5) {
-      size -= 0.5;
-      span.style.fontSize = size + 'px';
-    }
-  });
+  const ajustar = el => {
+    el.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    const maxW = el.clientWidth - 4;
+    const maxH = el.clientHeight - 4;
 
-  const backs = document.querySelectorAll('.flip-card-back');
-  backs.forEach(back => {
-    back.style.fontSize = '';
-    let size = parseFloat(getComputedStyle(back).fontSize);
-    const maxW = back.clientWidth - 4;
-    const maxH = back.clientHeight - 4;
-    while ((back.scrollWidth > maxW || back.scrollHeight > maxH) && size > 5) {
-      size -= 0.5;
-      back.style.fontSize = size + 'px';
+    // Aumentar tamaño hasta que casi llene el contenedor
+    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < 40) {
+      size += 0.5;
+      el.style.fontSize = size + 'px';
     }
-  });
+    // Reducir si nos excedimos
+    while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > 5) {
+      size -= 0.5;
+      el.style.fontSize = size + 'px';
+    }
+  };
+
+  document.querySelectorAll('.cuadro-icono span').forEach(ajustar);
+  document.querySelectorAll('.flip-card-back').forEach(ajustar);
+  document.querySelectorAll('.tabla-resultados thead th').forEach(ajustar);
 }
+
+window.addEventListener('resize', ajustarTextoCeldas);
 
 function actualizarModalTraducciones() {
   const modal = document.getElementById('modal');
