@@ -135,6 +135,8 @@ input {
 /* Nombre + Imagen en una sola celda */
 .imagen-nombre {
   padding: 0;
+  position: relative;
+  overflow: visible;
 }
 
 .cuadro-icono {
@@ -149,7 +151,7 @@ input {
 
 .numero-intento {
   position: absolute;
-  left: -10px;
+  left: -26px;
   top: 50%;
   transform: translateY(-50%);
   background: #444;
@@ -162,6 +164,7 @@ input {
   align-items: center;
   justify-content: center;
   border: 2px solid #000;
+  z-index: 10;
 }
 
 .cuadro-icono img {

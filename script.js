@@ -150,13 +150,16 @@ async function intentarAdivinar() {
 
   const celdaNombre = crearFlipCell(
     `<div class="cuadro-icono">
-        <span class="numero-intento">#${numeroIntento}</span>
         <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
         <span>${traducirValor(mineral.nombre)}</span>
      </div>`,
     "",
     "imagen-nombre"
   );
+  const spanNum = document.createElement("span");
+  spanNum.className = "numero-intento";
+  spanNum.textContent = `#${numeroIntento}`;
+  celdaNombre.appendChild(spanNum);
   fila.appendChild(celdaNombre);
 
   fila.appendChild(
