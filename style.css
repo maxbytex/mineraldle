@@ -174,13 +174,9 @@ td.arrow-down .flip-card-back::before {
 }
 
 .cuadro-icono {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  height: 80px;
   width: 80px;
+  height: 80px;
   min-width: 80px;
   min-height: 80px;
 }
@@ -204,22 +200,23 @@ td.arrow-down .flip-card-back::before {
 }
 
 .cuadro-icono img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
   border: 2px solid #000;
-  background-color: #fff;
-  margin-bottom: 2px;
 }
 
 .cuadro-icono span {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.6em;
-  text-align: center;
-  padding: 0 4px;
-  max-width: 100%;
+  color: #fff;
   white-space: nowrap;
-  overflow: hidden;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+               -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 /* Colores de comparación */
@@ -321,8 +318,8 @@ td.arrow-down .flip-card-back::before {
     font-size: 0.5em;
   }
   .cuadro-icono img {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
   }
 
 }
