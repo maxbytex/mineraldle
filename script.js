@@ -85,38 +85,18 @@ function intentarAdivinar() {
 
   const fila = document.createElement("tr");
 
-  // Create each cell with proper content and styling
-  const celdaNombre = document.createElement("td");
-  celdaNombre.className = "imagen-nombre";
-  celdaNombre.innerHTML = `
-    <div class="cuadro-icono">
-      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
-      <span>${capitalizar(mineral.nombre)}</span>
-    </div>
+  fila.innerHTML = `
+    <td class="imagen-nombre">
+      <div class="cuadro-icono">
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
+        <span>${capitalizar(mineral.nombre)}</span>
+      </div>
+    </td>
+    <td class="${compararClase(mineral.dureza, mineralDelDia.dureza)}">${mineral.dureza}</td>
+    <td class="${compararClase(mineral.sistema, mineralDelDia.sistema)}">${mineral.sistema.join(", ")}</td>
+    <td class="${compararClase(mineral.brillo, mineralDelDia.brillo)}">${mineral.brillo.join(", ")}</td>
+    <td class="${compararClase(mineral.grupo, mineralDelDia.grupo)}">${mineral.grupo.join(", ")}</td>
   `;
-
-  const celdaDureza = document.createElement("td");
-  celdaDureza.className = compararClase(mineral.dureza, mineralDelDia.dureza);
-  celdaDureza.textContent = mineral.dureza;
-
-  const celdaSistema = document.createElement("td");
-  celdaSistema.className = compararClase(mineral.sistema, mineralDelDia.sistema);
-  celdaSistema.textContent = mineral.sistema.map(s => capitalizar(s)).join(", ");
-
-  const celdaBrillo = document.createElement("td");
-  celdaBrillo.className = compararClase(mineral.brillo, mineralDelDia.brillo);
-  celdaBrillo.textContent = mineral.brillo.map(b => capitalizar(b)).join(", ");
-
-  const celdaGrupo = document.createElement("td");
-  celdaGrupo.className = compararClase(mineral.grupo, mineralDelDia.grupo);
-  celdaGrupo.textContent = mineral.grupo.map(g => capitalizar(g)).join(", ");
-
-  // Append all cells to the row
-  fila.appendChild(celdaNombre);
-  fila.appendChild(celdaDureza);
-  fila.appendChild(celdaSistema);
-  fila.appendChild(celdaBrillo);
-  fila.appendChild(celdaGrupo);
 
   document.getElementById("tabla-cuerpo").appendChild(fila);
 
@@ -126,9 +106,6 @@ function intentarAdivinar() {
   } else if (intentos >= maxIntentos) {
     document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
   }
-
-  // Clear the input
-  document.getElementById("inputMineral").value = "";
 }
 
 
