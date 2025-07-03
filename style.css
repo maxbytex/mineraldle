@@ -60,18 +60,15 @@ input {
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
-#contenedor-tabla {
-  width: 100%;
-  overflow-x: auto;
-}
-
 .tabla-resultados {
-  width: max-content;
   border-collapse: separate;
   border-spacing: 6px;
   font-size: 0.95em;
   margin: 2em 0;
 }
+
+
+
 
 /* Cabecera (solo aparece una vez) */
 .tabla-resultados thead th {
