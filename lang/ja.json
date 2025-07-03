@@ -13,5 +13,55 @@
   "mensajes": {
     "correcto": "正解！本日の鉱物は：",
     "fallo": "試行回数が終了しました。正解は："
+  },
+  "valores": {
+    "cuarzo": "石英",
+    "pirita": "黄鉄鉱",
+    "calcita": "方解石",
+    "feldespato": "長石",
+    "galena": "方鉛鉱",
+    "malaquita": "マラカイト",
+    "hematita": "赤鉄鉱",
+    "fluorita": "蛍石",
+    "magnetita": "磁鉄鉱",
+    "azurita": "アズライト",
+    "olivino": "カンラン石",
+    "crisocola": "クリソコラ",
+
+    "tectosilicatos": "テクトケイ酸塩",
+    "sulfuros": "硫化物",
+    "carbonatos": "炭酸塩",
+    "\u00f3xidos": "酸化物",
+    "haluros": "ハロゲン化物",
+    "nesosilicatos": "ネソケイ酸塩",
+    "filosilicatos": "フィロケイ酸塩",
+
+    "trigonal": "三方晶系",
+    "hexagonal": "六方晶系",
+    "monocl\u00ednico": "単斜晶系",
+    "tricl\u00ednico": "三斜晶系",
+    "c\u00fabico": "等軸晶系",
+    "ortorr\u00f3mbico": "斜方晶系",
+
+    "incoloro": "無色",
+    "blanco": "白",
+    "morado": "紫",
+    "dorado": "金色",
+    "rosa": "ピンク",
+    "gris": "灰色",
+    "plata": "銀色",
+    "verde": "緑",
+    "rojo": "赤",
+    "negro": "黒",
+    "violeta": "バイオレット",
+    "amarillo": "黄色",
+    "azul": "青",
+
+    "v\u00edtreo": "ガラス光沢",
+    "met\u00e1lico": "金属光沢",
+    "nacarado": "真珠光沢",
+    "perlado": "真珠光沢",
+    "terroso": "土状光沢",
+    "mate": "無光沢"
   }
 }
