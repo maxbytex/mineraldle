@@ -116,20 +116,20 @@ function intentarAdivinar() {
 
   const fila = document.createElement("tr");
 
-  fila.innerHTML = `
-    <td class="imagen-nombre">
-      <div class="cuadro-icono">
-        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
-        <span>${capitalizar(mineral.nombre)}</span>
-      </div>
-    </td>
-    ${comparar(mineral.dureza, mineralDelDia.dureza)}
-    ${comparar(mineral.sistema, mineralDelDia.sistema)}
-    ${comparar(mineral.brillo, mineralDelDia.brillo)}
-    ${comparar(mineral.grupo, mineralDelDia.grupo)}
-  `;
+fila.innerHTML = `
+  <td class="imagen-nombre">
+    <div class="cuadro-icono">
+      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
+      <span>${capitalizar(mineral.nombre)}</span>
+    </div>
+  </td>
+  ${comparar(mineral.dureza, mineralDelDia.dureza)}
+  ${comparar(mineral.sistema, mineralDelDia.sistema)}
+  ${comparar(mineral.brillo, mineralDelDia.brillo)}
+  ${comparar(mineral.grupo, mineralDelDia.grupo)}
+`;
 
-  document.getElementById("tabla-cuerpo").appendChild(fila);
+document.getElementById("tabla-cuerpo").appendChild(fila);
 
   intentos++;
   if (mineral.nombre === mineralDelDia.nombre) {
