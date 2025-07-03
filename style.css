@@ -152,7 +152,7 @@ td.arrow-down .flip-card-back::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2em;
+  font-size: 5em;
   opacity: 0.2;
   pointer-events: none;
   z-index: 0;
@@ -214,13 +214,12 @@ td.arrow-down .flip-card-back::before {
 }
 
 .cuadro-icono span {
-  font-size: 0.75em;
+  font-size: 0.6em;
   text-align: center;
   padding: 0 4px;
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Colores de comparación */
@@ -317,6 +316,9 @@ td.arrow-down .flip-card-back::before {
     height: 60px;
     min-width: 60px;
     min-height: 60px;
+  }
+  .cuadro-icono span {
+    font-size: 0.5em;
   }
   .cuadro-icono img {
     width: 30px;

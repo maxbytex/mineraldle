@@ -218,6 +218,7 @@ async function intentarAdivinar() {
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
+  ajustarTextoCeldas();
   await revealRow(fila);
 
   const gano = mineral.nombre === mineralDelDia.nombre;
@@ -365,6 +366,22 @@ function actualizarTraduccionesTabla() {
         back.innerHTML = nuevo;
       }
     });
+  });
+  ajustarTextoCeldas();
+}
+
+function ajustarTextoCeldas() {
+  const spans = document.querySelectorAll('.cuadro-icono span');
+  spans.forEach(span => {
+    span.style.fontSize = '';
+    const cont = span.parentElement;
+    if (!cont) return;
+    const max = cont.clientWidth - 4;
+    let size = parseFloat(getComputedStyle(span).fontSize);
+    while (span.scrollWidth > max && size > 5) {
+      size -= 0.5;
+      span.style.fontSize = size + 'px';
+    }
   });
 }
 
