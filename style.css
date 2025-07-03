@@ -383,3 +383,30 @@ td.arrow-down .flip-card-back::before {
   cursor: pointer;
   font-size: 1.5em;
 }
+
+/* Extra responsive tweaks */
+@media (max-width: 600px) {
+  #main-logo {
+    width: 80%;
+    max-width: 300px;
+  }
+  #form-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #btnAdivinar {
+    width: 100%;
+  }
+  #counter {
+    margin-bottom: 0.5em;
+  }
+  .autocomplete-container,
+  input {
+    width: 100%;
+    max-width: none;
+  }
+  #contenedor-tabla {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
