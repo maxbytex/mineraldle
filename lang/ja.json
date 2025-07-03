@@ -3,10 +3,12 @@
   "input_placeholder": "鉱物の名前を入力...",
   "boton_adivinar": "予想する",
   "propiedades": {
-    "dureza": "硬度",
+    "grupo": "グループ",
     "sistema": "結晶系",
+    "color": "色",
     "brillo": "光沢",
-    "grupo": "グループ"
+    "dureza": "硬度",
+    "densidad": "密度"
   },
   "mensajes": {
     "correcto": "正解！本日の鉱物は：",

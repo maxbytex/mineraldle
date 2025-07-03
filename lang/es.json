@@ -3,10 +3,12 @@
   "input_placeholder": "Escribe un mineral...",
   "boton_adivinar": "Adivinar",
   "propiedades": {
-    "dureza": "Dureza",
+    "grupo": "Grupo",
     "sistema": "Sistema cristalino",
+    "color": "Color",
     "brillo": "Brillo",
-    "grupo": "Grupo"
+    "dureza": "Dureza",
+    "densidad": "Densidad"
   },
   "mensajes": {
     "correcto": "¡Correcto! Has adivinado el mineral del día:",

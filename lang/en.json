@@ -3,10 +3,12 @@
   "input_placeholder": "Type a mineral...",
   "boton_adivinar": "Guess",
   "propiedades": {
-    "dureza": "Hardness",
+    "grupo": "Group",
     "sistema": "Crystal system",
+    "color": "Color",
     "brillo": "Luster",
-    "grupo": "Group"
+    "dureza": "Hardness",
+    "densidad": "Density"
   },
   "mensajes": {
     "correcto": "Correct! The mineral of the day was:",
