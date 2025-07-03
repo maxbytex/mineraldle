@@ -383,6 +383,18 @@ function ajustarTextoCeldas() {
       span.style.fontSize = size + 'px';
     }
   });
+
+  const backs = document.querySelectorAll('.flip-card-back');
+  backs.forEach(back => {
+    back.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(back).fontSize);
+    const maxW = back.clientWidth - 4;
+    const maxH = back.clientHeight - 4;
+    while ((back.scrollWidth > maxW || back.scrollHeight > maxH) && size > 5) {
+      size -= 0.5;
+      back.style.fontSize = size + 'px';
+    }
+  });
 }
 
 function actualizarModalTraducciones() {
