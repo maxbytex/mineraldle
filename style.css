@@ -132,6 +132,33 @@ input {
 
 .flip-card-back {
   transform: rotateY(180deg);
+  position: relative;
+}
+
+.flip-card-back * {
+  position: relative;
+  z-index: 1;
+}
+
+td.arrow-up .flip-card-back::before,
+td.arrow-down .flip-card-back::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+td.arrow-up .flip-card-back::before {
+  content: "\2191";
+}
+
+td.arrow-down .flip-card-back::before {
+  content: "\2193";
 }
 
 /* Nombre + Imagen en una sola celda */

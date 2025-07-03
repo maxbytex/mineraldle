@@ -203,7 +203,7 @@ async function intentarAdivinar() {
     crearFlipCell(
       mineral.dureza,
       compararClase(mineral.dureza, mineralDelDia.dureza),
-      "",
+      direccionFlecha(mineral.dureza, mineralDelDia.dureza),
       mineral.dureza
     )
   );
@@ -211,7 +211,7 @@ async function intentarAdivinar() {
     crearFlipCell(
       mineral.densidad,
       compararClase(mineral.densidad, mineralDelDia.densidad),
-      "",
+      direccionFlecha(mineral.densidad, mineralDelDia.densidad),
       mineral.densidad
     )
   );
@@ -265,6 +265,16 @@ function compararClase(valor, objetivo) {
   if (conjuntosIguales) return "verde";
   if (coincidencias.length > 0) return "amarillo";
   return "rojo";
+}
+
+function direccionFlecha(valor, objetivo) {
+  if (
+    isNaN(parseFloat(valor)) ||
+    isNaN(parseFloat(objetivo)) ||
+    parseFloat(valor) === parseFloat(objetivo)
+  )
+    return "";
+  return parseFloat(valor) < parseFloat(objetivo) ? "arrow-up" : "arrow-down";
 }
 
 
