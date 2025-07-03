@@ -161,8 +161,25 @@ function intentarAdivinar() {
 
 
 function compararClase(valor, objetivo) {
-  const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
-  const obj = Array.isArray(objetivo) ? objetivo.map(o => String(o).toLowerCase()) : [String(objetivo).toLowerCase()];
+  const ambosNumeros =
+    !Array.isArray(valor) &&
+    !Array.isArray(objetivo) &&
+    !isNaN(parseFloat(valor)) &&
+    !isNaN(parseFloat(objetivo));
+
+  if (ambosNumeros) {
+    const diff = Math.abs(parseFloat(valor) - parseFloat(objetivo));
+    if (diff === 0) return "verde";
+    if (diff <= 1) return "amarillo";
+    return "rojo";
+  }
+
+  const val = Array.isArray(valor)
+    ? valor.map(v => String(v).toLowerCase())
+    : [String(valor).toLowerCase()];
+  const obj = Array.isArray(objetivo)
+    ? objetivo.map(o => String(o).toLowerCase())
+    : [String(objetivo).toLowerCase()];
   const coincidencias = val.filter(v => obj.includes(v));
 
   const valSet = new Set(val);
@@ -170,8 +187,8 @@ function compararClase(valor, objetivo) {
   const conjuntosIguales = valSet.size === objSet.size && [...valSet].every(v => objSet.has(v));
 
   if (conjuntosIguales) return "verde";
-  else if (coincidencias.length > 0) return "amarillo";
-  else return "rojo";
+  if (coincidencias.length > 0) return "amarillo";
+  return "rojo";
 }
 
 
