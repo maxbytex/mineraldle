@@ -15,6 +15,12 @@ h1 {
   color: #00e676;
 }
 
+#main-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 0.5em;
+}
+
 #language-selector {
   margin-bottom: 1em;
 }
