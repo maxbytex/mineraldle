@@ -85,20 +85,23 @@ function intentarAdivinar() {
 
   const fila = document.createElement("tr");
 
-  fila.innerHTML = `
-    <td class="imagen-nombre">
-      <div class="cuadro-icono">
+  const celdaNombre = crearFlipCell(
+    `<div class="cuadro-icono">
         <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
         <span>${capitalizar(mineral.nombre)}</span>
-      </div>
-    </td>
-    <td class="${compararClase(mineral.dureza, mineralDelDia.dureza)}">${mineral.dureza}</td>
-    <td class="${compararClase(mineral.sistema, mineralDelDia.sistema)}">${mineral.sistema.join(", ")}</td>
-    <td class="${compararClase(mineral.brillo, mineralDelDia.brillo)}">${mineral.brillo.join(", ")}</td>
-    <td class="${compararClase(mineral.grupo, mineralDelDia.grupo)}">${mineral.grupo.join(", ")}</td>
-  `;
+     </div>`,
+    "",
+    "imagen-nombre"
+  );
+  fila.appendChild(celdaNombre);
+
+  fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
+  fila.appendChild(crearFlipCell(mineral.sistema.join(", "), compararClase(mineral.sistema, mineralDelDia.sistema)));
+  fila.appendChild(crearFlipCell(mineral.brillo.join(", "), compararClase(mineral.brillo, mineralDelDia.brillo)));
+  fila.appendChild(crearFlipCell(mineral.grupo.join(", "), compararClase(mineral.grupo, mineralDelDia.grupo)));
 
   document.getElementById("tabla-cuerpo").appendChild(fila);
+  revealRow(fila);
 
   intentos++;
   if (mineral.nombre === mineralDelDia.nombre) {
@@ -149,4 +152,35 @@ function comparar(valor, objetivo) {
 
 function capitalizar(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function crearFlipCell(contenido, colorClase = "", extra = "") {
+  const td = document.createElement("td");
+  td.className = `flip-card ${extra}`.trim();
+
+  const inner = document.createElement("div");
+  inner.className = "flip-card-inner";
+
+  const front = document.createElement("div");
+  front.className = "flip-card-front";
+  front.textContent = "?";
+
+  const back = document.createElement("div");
+  back.className = `flip-card-back ${colorClase}`.trim();
+  back.innerHTML = contenido;
+
+  inner.appendChild(front);
+  inner.appendChild(back);
+  td.appendChild(inner);
+
+  return td;
+}
+
+function revealRow(fila) {
+  const celdas = Array.from(fila.querySelectorAll(".flip-card"));
+  celdas.forEach((celda, idx) => {
+    setTimeout(() => {
+      celda.classList.add("flipped");
+    }, idx * 500);
+  });
 }
