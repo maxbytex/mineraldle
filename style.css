@@ -65,6 +65,7 @@ input {
   border-spacing: 6px;
   font-size: 0.95em;
   margin: 2em 0;
+  table-layout: fixed;
 }
 
 
@@ -78,12 +79,16 @@ input {
   text-align: center;
   padding-bottom: 0.3em;
   border: none;
+  width: 80px;
+  min-width: 80px;
 }
 
 /* Celdas */
 .tabla-resultados td {
   width: 80px;
   height: 80px;
+  min-width: 80px;
+  min-height: 80px;
   border: 3px solid #000;
   border-radius: 10px;
   text-align: center;
@@ -176,6 +181,8 @@ td.arrow-down .flip-card-back::before {
   position: relative;
   height: 80px;
   width: 80px;
+  min-width: 80px;
+  min-height: 80px;
 }
 
 .numero-intento {
@@ -294,14 +301,22 @@ td.arrow-down .flip-card-back::before {
   h1 {
     font-size: 1.5em;
   }
+  .tabla-resultados thead th {
+    width: 60px;
+    min-width: 60px;
+  }
   .tabla-resultados td {
     width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
     font-size: 0.75em;
   }
   .cuadro-icono {
     width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
   }
   .cuadro-icono img {
     width: 30px;
