@@ -13,5 +13,55 @@
   "mensajes": {
     "correcto": "Correct! The mineral of the day was:",
     "fallo": "You're out of guesses. It was:"
+  },
+  "valores": {
+    "cuarzo": "Quartz",
+    "pirita": "Pyrite",
+    "calcita": "Calcite",
+    "feldespato": "Feldspar",
+    "galena": "Galena",
+    "malaquita": "Malachite",
+    "hematita": "Hematite",
+    "fluorita": "Fluorite",
+    "magnetita": "Magnetite",
+    "azurita": "Azurite",
+    "olivino": "Olivine",
+    "crisocola": "Chrysocolla",
+
+    "tectosilicatos": "Tectosilicates",
+    "sulfuros": "Sulfides",
+    "carbonatos": "Carbonates",
+    "\u00f3xidos": "Oxides",
+    "haluros": "Halides",
+    "nesosilicatos": "Nesosilicates",
+    "filosilicatos": "Phyllosilicates",
+
+    "trigonal": "Trigonal",
+    "hexagonal": "Hexagonal",
+    "monocl\u00ednico": "Monoclinic",
+    "tricl\u00ednico": "Triclinic",
+    "c\u00fabico": "Cubic",
+    "ortorr\u00f3mbico": "Orthorhombic",
+
+    "incoloro": "Colorless",
+    "blanco": "White",
+    "morado": "Purple",
+    "dorado": "Golden",
+    "rosa": "Pink",
+    "gris": "Gray",
+    "plata": "Silver",
+    "verde": "Green",
+    "rojo": "Red",
+    "negro": "Black",
+    "violeta": "Violet",
+    "amarillo": "Yellow",
+    "azul": "Blue",
+
+    "v\u00edtreo": "Vitreous",
+    "met\u00e1lico": "Metallic",
+    "nacarado": "Pearly",
+    "perlado": "Pearly",
+    "terroso": "Earthy",
+    "mate": "Dull"
   }
 }

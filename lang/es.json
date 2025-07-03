@@ -13,5 +13,6 @@
   "mensajes": {
     "correcto": "¡Correcto! Has adivinado el mineral del día:",
     "fallo": "Te has quedado sin intentos. Era:"
-  }
+  },
+  "valores": {}
 }

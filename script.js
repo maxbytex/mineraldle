@@ -6,6 +6,15 @@ const maxIntentos = 6;
 let minerales = [];
 let cabeceraMostrada = false;
 
+function traducirValor(valor) {
+  const key = String(valor).toLowerCase();
+  return (traducciones.valores && traducciones.valores[key]) || valor;
+}
+
+function traducirLista(arr) {
+  return arr.map(traducirValor);
+}
+
 function setIdioma(idioma) {
   fetch(`lang/${idioma}.json`)
     .then(res => res.json())
@@ -95,18 +104,38 @@ function intentarAdivinar() {
 
   const celdaNombre = crearFlipCell(
     `<div class="cuadro-icono">
-        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${mineral.nombre}" />
-        <span>${capitalizar(mineral.nombre)}</span>
+        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
+        <span>${traducirValor(mineral.nombre)}</span>
      </div>`,
     "",
     "imagen-nombre"
   );
   fila.appendChild(celdaNombre);
 
-  fila.appendChild(crearFlipCell(mineral.grupo.join(", "), compararClase(mineral.grupo, mineralDelDia.grupo)));
-  fila.appendChild(crearFlipCell(mineral.sistema.join(", "), compararClase(mineral.sistema, mineralDelDia.sistema)));
-  fila.appendChild(crearFlipCell(mineral.color.join(", "), compararClase(mineral.color, mineralDelDia.color)));
-  fila.appendChild(crearFlipCell(mineral.brillo.join(", "), compararClase(mineral.brillo, mineralDelDia.brillo)));
+  fila.appendChild(
+    crearFlipCell(
+      traducirLista(mineral.grupo).join(", "),
+      compararClase(mineral.grupo, mineralDelDia.grupo)
+    )
+  );
+  fila.appendChild(
+    crearFlipCell(
+      traducirLista(mineral.sistema).join(", "),
+      compararClase(mineral.sistema, mineralDelDia.sistema)
+    )
+  );
+  fila.appendChild(
+    crearFlipCell(
+      traducirLista(mineral.color).join(", "),
+      compararClase(mineral.color, mineralDelDia.color)
+    )
+  );
+  fila.appendChild(
+    crearFlipCell(
+      traducirLista(mineral.brillo).join(", "),
+      compararClase(mineral.brillo, mineralDelDia.brillo)
+    )
+  );
   fila.appendChild(crearFlipCell(mineral.dureza, compararClase(mineral.dureza, mineralDelDia.dureza)));
   fila.appendChild(crearFlipCell(mineral.densidad, compararClase(mineral.densidad, mineralDelDia.densidad)));
 
@@ -116,9 +145,15 @@ function intentarAdivinar() {
 
   intentos++;
   if (mineral.nombre === mineralDelDia.nombre) {
-    document.getElementById("resultado").innerText = (traducciones.mensajes?.correcto || "¡Correcto!") + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText =
+      (traducciones.mensajes?.correcto || "¡Correcto!") +
+      " " +
+      traducirValor(mineralDelDia.nombre);
   } else if (intentos >= maxIntentos) {
-    document.getElementById("resultado").innerText = (traducciones.mensajes?.fallo || "Has fallado.") + " " + mineralDelDia.nombre;
+    document.getElementById("resultado").innerText =
+      (traducciones.mensajes?.fallo || "Has fallado.") +
+      " " +
+      traducirValor(mineralDelDia.nombre);
   }
 }
 
