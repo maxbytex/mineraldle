@@ -12,7 +12,12 @@
   },
   "mensajes": {
     "correcto": "¡Correcto! Has adivinado el mineral del día:",
-    "fallo": "Te has quedado sin intentos. Era:"
+    "fallo": "Te has quedado sin intentos. Era:",
+    "ganaste_titulo": "\u00a1GANASTE!",
+    "perdiste_titulo": "GAME OVER",
+    "mineral_era": "El mineral era:",
+    "intentos": "Intentos:",
+    "intentos_restantes": "Intentos restantes:"
   },
   "valores": {}
 }

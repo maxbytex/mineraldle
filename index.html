@@ -18,12 +18,14 @@
     <button onclick="setIdioma('ja')">🇯🇵</button>
   </div>
 
-  <div class="autocomplete-container">
-  <input id="inputMineral" placeholder="Escribe un mineral..." autocomplete="off" />
-  <ul id="autocomplete-list" class="autocomplete-items"></ul>
-</div>
-
-  <button id="btnAdivinar">Adivinar</button>
+  <div id="form-container">
+    <div id="counter"><span id="counter-label"></span><span id="counter-value"></span></div>
+    <div class="autocomplete-container">
+      <input id="inputMineral" placeholder="Escribe un mineral..." autocomplete="off" />
+      <ul id="autocomplete-list" class="autocomplete-items"></ul>
+    </div>
+    <button id="btnAdivinar">Adivinar</button>
+  </div>
 
   <div id="contenedor-tabla">
   <table class="tabla-resultados" id="tablaResultados">
@@ -45,5 +47,17 @@
 
   <div id="resultado"></div>
   <div id="pistas"></div>
+
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-mineral"></p>
+      <img id="modal-img" src="" alt="">
+      <p id="modal-intentos"></p>
+    </div>
+  </div>
+
+  <div id="fireworks" class="hidden">🎆</div>
 </body>
 </html>

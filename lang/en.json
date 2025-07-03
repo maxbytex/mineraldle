@@ -12,7 +12,12 @@
   },
   "mensajes": {
     "correcto": "Correct! The mineral of the day was:",
-    "fallo": "You're out of guesses. It was:"
+    "fallo": "You're out of guesses. It was:",
+    "ganaste_titulo": "YOU WON!",
+    "perdiste_titulo": "GAME OVER",
+    "mineral_era": "The mineral was:",
+    "intentos": "Tries:",
+    "intentos_restantes": "Tries left:"
   },
   "valores": {
     "cuarzo": "Quartz",

@@ -2,9 +2,43 @@ let traducciones = {};
 let idiomaActual = "es";
 let mineralDelDia = null;
 let intentos = 0;
-const maxIntentos = 6;
+const maxIntentos = 10;
+let juegoTerminado = false;
 let minerales = [];
 let cabeceraMostrada = false;
+
+function updateCounter() {
+  const valor = maxIntentos - intentos;
+  document.getElementById("counter-value").innerText = valor;
+}
+
+function deshabilitarJuego() {
+  document.getElementById("inputMineral").disabled = true;
+  document.getElementById("btnAdivinar").disabled = true;
+}
+
+function mostrarModal(gano) {
+  const modal = document.getElementById("modal");
+  document.getElementById("modal-title").innerText = gano
+    ? traducciones.mensajes?.ganaste_titulo || "YOU WON!"
+    : traducciones.mensajes?.perdiste_titulo || "GAME OVER";
+  document.getElementById("modal-mineral").innerText =
+    (traducciones.mensajes?.mineral_era || "El mineral era:") +
+    " " +
+    traducirValor(mineralDelDia.nombre);
+  document.getElementById("modal-img").src =
+    "img/" + mineralDelDia.nombre.toLowerCase() + ".png";
+  document.getElementById("modal-img").alt = traducirValor(mineralDelDia.nombre);
+  document.getElementById("modal-intentos").innerText =
+    (traducciones.mensajes?.intentos || "Intentos:") + " " + intentos;
+  modal.classList.remove("hidden");
+}
+
+function mostrarFuegos() {
+  const fw = document.getElementById("fireworks");
+  fw.classList.remove("hidden");
+  setTimeout(() => fw.classList.add("hidden"), 2000);
+}
 
 function traducirValor(valor) {
   const key = String(valor).toLowerCase();
@@ -38,11 +72,15 @@ function aplicarTraducciones() {
     document.getElementById("th-dureza").innerText = traducciones.propiedades.dureza || "Dureza";
     document.getElementById("th-densidad").innerText = traducciones.propiedades.densidad || "Densidad";
   }
+  document.getElementById("counter-label").innerText =
+    (traducciones.mensajes?.intentos_restantes || "Intentos:");
+  updateCounter();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const guardado = localStorage.getItem("idioma") || "es";
   setIdioma(guardado);
+  updateCounter();
 
   fetch("minerales.json")
     .then(res => res.json())
@@ -55,6 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   document.getElementById("btnAdivinar").addEventListener("click", intentarAdivinar);
+  document.getElementById("close-modal").addEventListener("click", () => {
+    document.getElementById("modal").classList.add("hidden");
+  });
 });
 
 function iniciarAutocompletado() {
@@ -92,7 +133,8 @@ function iniciarAutocompletado() {
   });
 }
 
-function intentarAdivinar() {
+async function intentarAdivinar() {
+  if (juegoTerminado) return;
   const input = document.getElementById("inputMineral").value.trim().toLowerCase();
   const mineral = minerales.find(m => m.nombre.toLowerCase() === input);
   if (!mineral) {
@@ -141,19 +183,20 @@ function intentarAdivinar() {
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
-  revealRow(fila);
+  await revealRow(fila);
 
   intentos++;
-  if (mineral.nombre === mineralDelDia.nombre) {
-    document.getElementById("resultado").innerText =
-      (traducciones.mensajes?.correcto || "¡Correcto!") +
-      " " +
-      traducirValor(mineralDelDia.nombre);
-  } else if (intentos >= maxIntentos) {
-    document.getElementById("resultado").innerText =
-      (traducciones.mensajes?.fallo || "Has fallado.") +
-      " " +
-      traducirValor(mineralDelDia.nombre);
+  updateCounter();
+  const gano = mineral.nombre === mineralDelDia.nombre;
+  if (gano || intentos >= maxIntentos) {
+    juegoTerminado = true;
+    deshabilitarJuego();
+    if (gano) {
+      mostrarFuegos();
+      setTimeout(() => mostrarModal(true), 2000);
+    } else {
+      mostrarModal(false);
+    }
   }
 }
 
@@ -240,10 +283,15 @@ function crearFlipCell(contenido, colorClase = "", extra = "") {
 }
 
 function revealRow(fila) {
-  const celdas = Array.from(fila.querySelectorAll(".flip-card"));
-  celdas.forEach((celda, idx) => {
-    setTimeout(() => {
-      celda.classList.add("flipped");
-    }, idx * 500);
+  return new Promise(resolve => {
+    const celdas = Array.from(fila.querySelectorAll(".flip-card"));
+    celdas.forEach((celda, idx) => {
+      setTimeout(() => {
+        celda.classList.add("flipped");
+        if (idx === celdas.length - 1) {
+          setTimeout(resolve, 500);
+        }
+      }, idx * 500);
+    });
   });
 }

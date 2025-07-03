@@ -12,7 +12,12 @@
   },
   "mensajes": {
     "correcto": "正解！本日の鉱物は：",
-    "fallo": "試行回数が終了しました。正解は："
+    "fallo": "試行回数が終了しました。正解は：",
+    "ganaste_titulo": "\u304a\u3081\u3067\u3068\u3046\uff01",
+    "perdiste_titulo": "GAME OVER",
+    "mineral_era": "\u92fc\u7269\u306f:",
+    "intentos": "\u8a66\u884c\u56de\u6570:",
+    "intentos_restantes": "\u6b8b\u308a\u56de\u6570:"
   },
   "valores": {
     "cuarzo": "石英",
