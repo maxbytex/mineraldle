@@ -83,6 +83,8 @@ input {
   border: none;
   width: 80px;
   min-width: 80px;
+  height: 80px;
+  overflow: hidden;
 }
 
 /* Celdas */
@@ -302,6 +304,8 @@ td.arrow-down .flip-card-back::before {
   .tabla-resultados thead th {
     width: 60px;
     min-width: 60px;
+    height: 60px;
+    overflow: hidden;
   }
   .tabla-resultados td {
     width: 60px;
