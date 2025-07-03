@@ -142,8 +142,26 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   height: 80px;
   width: 80px;
+}
+
+.numero-intento {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #444;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
 }
 
 .cuadro-icono img {
