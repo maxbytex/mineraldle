@@ -312,13 +312,14 @@ td.arrow-down .flip-card-back::before {
     height: 60px;
     white-space: nowrap;
     overflow: hidden;
+    font-size: clamp(12px, 3vw, 18px);
   }
   .tabla-resultados td {
     width: 60px;
     height: 60px;
     min-width: 60px;
     min-height: 60px;
-    font-size: 0.9em;
+    font-size: clamp(12px, 4vw, 24px);
   }
   .cuadro-icono {
     width: 60px;
@@ -327,7 +328,7 @@ td.arrow-down .flip-card-back::before {
     min-height: 60px;
   }
   .cuadro-icono span {
-    font-size: 0.7em;
+    font-size: clamp(10px, 3vw, 18px);
   }
   .cuadro-icono img {
     width: 100%;
