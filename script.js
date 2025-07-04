@@ -329,22 +329,19 @@ function direccionFlecha(valor, objetivo) {
 
 
 function comparar(valor, objetivo) {
-  const val = Array.isArray(valor) ? valor.map(v => String(v).toLowerCase()) : [String(valor).toLowerCase()];
-  const obj = Array.isArray(objetivo) ? objetivo.map(o => String(o).toLowerCase()) : [String(objetivo).toLowerCase()];
+  const val = Array.isArray(valor) ? valor.map(v => v.toLowerCase()) : [valor.toLowerCase()];
+  const obj = Array.isArray(objetivo) ? objetivo.map(o => o.toLowerCase()) : [objetivo.toLowerCase()];
   const coincidencias = val.filter(v => obj.includes(v));
-
-  const valSet = new Set(val);
-  const objSet = new Set(obj);
-  const conjuntosIguales = valSet.size === objSet.size && [...valSet].every(v => objSet.has(v));
+  const texto = (Array.isArray(valor) ? valor : valor.split(",")).map(v => v.trim()).join("<br>");
 
   let clase = "rojo";
-  if (conjuntosIguales) {
+  if (coincidencias.length === obj.length && val.length === obj.length) {
     clase = "verde";
   } else if (coincidencias.length > 0) {
     clase = "amarillo";
   }
 
-  return `<td class="${clase}">${val.map(v => capitalizar(v)).join(", ")}</td>`;
+  return `<td class="${clase} texto-auto">${texto}</td>`;
 }
 
 function capitalizar(str) {
