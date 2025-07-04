@@ -378,15 +378,21 @@ function ajustarTextoCeldas() {
     const maxW = el.clientWidth - 4;
     const maxH = el.clientHeight - 4;
 
+    const minSize = 12;
+    const maxSize = 40;
+
     // Aumentar tamaño hasta que casi llene el contenedor
-    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < 40) {
+    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
       size += 0.5;
       el.style.fontSize = size + 'px';
     }
-    // Reducir si nos excedimos
-    while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > 5) {
+    // Reducir si nos excedimos pero sin bajar del tamaño mínimo legible
+    while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > minSize) {
       size -= 0.5;
       el.style.fontSize = size + 'px';
+    }
+    if (size < minSize) {
+      el.style.fontSize = minSize + 'px';
     }
   };
 
