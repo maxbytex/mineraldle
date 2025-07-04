@@ -17,7 +17,8 @@
     "perdiste_titulo": "GAME OVER",
     "mineral_era": "The mineral was:",
     "intentos": "Tries:",
-    "intentos_restantes": "Tries left:"
+    "intentos_restantes": "Tries left:",
+    "proximo_mineral": "Next mineral in:"
   },
   "valores": {
     "cuarzo": "Quartz",

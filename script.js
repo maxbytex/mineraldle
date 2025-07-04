@@ -7,6 +7,18 @@ let juegoTerminado = false;
 let minerales = [];
 let cabeceraMostrada = false;
 let ultimoResultado = null;
+let timerInterval = null;
+
+function updateTimer() {
+  const now = new Date();
+  const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  const diff = tomorrow - now;
+  const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+  const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  const label = traducciones.mensajes?.proximo_mineral || 'Siguiente mineral en:';
+  document.getElementById('timer').innerText = `${label} ${h}:${m}:${s}`;
+}
 
 function updateCounter() {
   const valor = maxIntentos - intentos;
@@ -77,6 +89,7 @@ function aplicarTraducciones() {
   document.getElementById("counter-label").innerText =
     (traducciones.mensajes?.intentos_restantes || "Intentos: ");
   updateCounter();
+  updateTimer();
   actualizarTraduccionesTabla();
   actualizarModalTraducciones();
   ajustarTextoCeldas();
@@ -86,6 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const guardado = localStorage.getItem("idioma") || "es";
   setIdioma(guardado);
   updateCounter();
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
 
   fetch("minerales.json")
     .then(res => res.json())
