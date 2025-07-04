@@ -19,7 +19,7 @@ h1 {
 #main-logo {
   width: 100%;
   height: auto;
-  max-width: 300px;
+  max-width: 250px;
   margin-bottom: 0.5em;
   object-fit: contain;
 }
@@ -83,18 +83,18 @@ input {
   white-space: nowrap;
   padding-bottom: 0.3em;
   border: none;
-  width: 80px;
-  min-width: 80px;
-  height: 80px;
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
   overflow: hidden;
 }
 
 /* Celdas */
 .tabla-resultados td {
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
-  min-height: 80px;
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
   border: 3px solid #000;
   border-radius: 10px;
   text-align: center;
@@ -181,10 +181,10 @@ td.arrow-down .flip-card-back::before {
 
 .cuadro-icono {
   position: relative;
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
-  min-height: 80px;
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
 }
 
 .numero-intento {
@@ -308,7 +308,7 @@ td.arrow-down .flip-card-back::before {
     font-size: 16px;
   }
   h1 {
-    font-size: 2em;
+    font-size: 10em;
   }
   .tabla-resultados thead th {
     width: 60px;

@@ -75,7 +75,7 @@ function aplicarTraducciones() {
     document.getElementById("th-densidad").innerText = traducciones.propiedades.densidad || "Densidad";
   }
   document.getElementById("counter-label").innerText =
-    (traducciones.mensajes?.intentos_restantes || "Intentos:");
+    (traducciones.mensajes?.intentos_restantes || "Intentos: ");
   updateCounter();
   actualizarTraduccionesTabla();
   actualizarModalTraducciones();
