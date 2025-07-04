@@ -17,7 +17,8 @@
     "perdiste_titulo": "GAME OVER",
     "mineral_era": "\u92fc\u7269\u306f:",
     "intentos": "\u8a66\u884c\u56de\u6570:",
-    "intentos_restantes": "\u6b8b\u308a\u56de\u6570:"
+    "intentos_restantes": "\u6b8b\u308a\u56de\u6570:",
+    "proximo_mineral": "\u6b21\u306e\u92fc\u7269\u307e\u3067:"
   },
   "valores": {
     "cuarzo": "石英",
