@@ -448,4 +448,19 @@ td.arrow-down .flip-card-back::before {
     width: 100%;
     overflow-x: auto;
   }
+
+
+  td {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(0.7em, 1.5vw, 1.2em); /* Tamaño de fuente responsivo */
+  max-width: 100%;
+  width: fit-content;
+}
+
+
+
 }
