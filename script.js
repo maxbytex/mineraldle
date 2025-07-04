@@ -79,6 +79,7 @@ function aplicarTraducciones() {
   updateCounter();
   actualizarTraduccionesTabla();
   actualizarModalTraducciones();
+  ajustarTextoCeldas();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
