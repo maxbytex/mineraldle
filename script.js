@@ -248,6 +248,37 @@ async function intentarAdivinar() {
       mostrarModal(false);
     }
   }
+
+  setTimeout(() => {
+  const celdas = document.querySelectorAll("#pistas td");
+
+  celdas.forEach(td => {
+    const maxFont = 32; // px
+    const minFont = 10; // px
+    const padding = 10; // px
+    let fontSize = maxFont;
+
+    const span = document.createElement("span");
+    span.style.position = "absolute";
+    span.style.visibility = "hidden";
+    span.style.whiteSpace = "nowrap";
+    span.style.fontWeight = "bold";
+    td.appendChild(span);
+
+    span.innerText = td.innerText;
+
+    while (fontSize > minFont) {
+      span.style.fontSize = `${fontSize}px`;
+      if (span.offsetWidth + padding <= td.offsetWidth) break;
+      fontSize -= 1;
+    }
+
+    td.style.fontSize = `${fontSize}px`;
+    td.removeChild(span);
+  });
+}, 0);
+
+
 }
 
 
