@@ -250,31 +250,20 @@ async function intentarAdivinar() {
   }
 
   setTimeout(() => {
-  const celdas = document.querySelectorAll("#pistas td");
+  document.querySelectorAll("#pistas td.texto-auto").forEach(td => {
+    // Extrae texto, ajusta tamaño en función del número de líneas Y ancho
+    const contentLines = td.innerHTML.split("<br>").length;
+    const width = td.offsetWidth;
 
-  celdas.forEach(td => {
-    const maxFont = 32; // px
-    const minFont = 10; // px
-    const padding = 10; // px
-    let fontSize = maxFont;
+    let base = 20; // px
+    if (width > 160) base = 28;
+    if (width > 200) base = 32;
 
-    const span = document.createElement("span");
-    span.style.position = "absolute";
-    span.style.visibility = "hidden";
-    span.style.whiteSpace = "nowrap";
-    span.style.fontWeight = "bold";
-    td.appendChild(span);
+    if (contentLines > 4) base *= 0.65;
+    else if (contentLines > 2) base *= 0.8;
+    else if (contentLines === 1) base *= 1.05;
 
-    span.innerText = td.innerText;
-
-    while (fontSize > minFont) {
-      span.style.fontSize = `${fontSize}px`;
-      if (span.offsetWidth + padding <= td.offsetWidth) break;
-      fontSize -= 1;
-    }
-
-    td.style.fontSize = `${fontSize}px`;
-    td.removeChild(span);
+    td.style.fontSize = `${base}px`;
   });
 }, 0);
 
