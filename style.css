@@ -450,15 +450,13 @@ td.arrow-down .flip-card-back::before {
   }
 
 
-  td {
+td {
   text-align: center;
   vertical-align: middle;
-  white-space: nowrap;
+  padding: 0.5em;
   overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(0.7em, 1.5vw, 1.2em); /* Tamaño de fuente responsivo */
-  max-width: 100%;
-  width: fit-content;
+  white-space: nowrap;
+  font-weight: bold;
 }
 
 
