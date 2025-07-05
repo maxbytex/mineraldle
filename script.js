@@ -417,21 +417,18 @@ function ajustarTextoCeldas() {
       texto = el.textContent.trim();
     }
 
-    const minSize = 12;
-    const maxDim = Math.min(el.clientWidth, el.clientHeight);
-    let maxSize = Math.min(48, maxDim * 0.8);
-    let size = maxSize;
-    el.style.fontSize = size + 'px';
+    const lineas = el.innerHTML.split('<br>').length;
+    const width = el.offsetWidth;
 
-    while ((el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight) && size > minSize) {
-      size -= 1;
-      el.style.fontSize = size + 'px';
-    }
+    let base = 20;
+    if (width > 160) base = 28;
+    if (width > 200) base = 32;
 
-    while (el.scrollWidth <= el.clientWidth && el.scrollHeight <= el.clientHeight && size < maxSize) {
-      size += 1;
-      el.style.fontSize = size + 'px';
-    }
+    if (lineas > 4) base *= 0.65;
+    else if (lineas > 2) base *= 0.8;
+    else if (lineas === 1) base *= 1.05;
+
+    el.style.fontSize = `${base}px`;
   };
 
   document.querySelectorAll('.cuadro-icono span, .flip-card-back, .tabla-resultados thead th').forEach(ajustar);
