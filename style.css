@@ -512,6 +512,28 @@ th {
   }
 }
 
+/* Dinamismo visual adicional */
+.flip-card-back {
+  padding: 4px;
+  font-weight: bold;
+  text-align: center;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+/* Mejor visibilidad para pantallas grandes */
+@media (min-width: 1000px) {
+  .tabla-resultados td {
+    font-size: clamp(18px, 2vw, 40px);
+  }
+  .flip-card-back {
+    font-size: clamp(18px, 2vw, 40px);
+  }
+}
+
+
 
 
 

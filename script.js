@@ -410,33 +410,41 @@ function actualizarTraduccionesTabla() {
 
 function ajustarTextoCeldas() {
   const ajustar = el => {
+    let texto = el.innerText || el.textContent;
+
+    // Dividir por comas en líneas nuevas
+    if (texto.includes(",")) {
+      el.innerHTML = texto.split(",").map(p => p.trim()).join("<br>");
+    }
+
     el.style.fontSize = '';
     let size = parseFloat(getComputedStyle(el).fontSize);
-    const maxW = el.clientWidth - 4;
-    const maxH = el.clientHeight - 4;
-
-    const minSize = 12;
+    const maxW = el.clientWidth - 6;
+    const maxH = el.clientHeight - 6;
+    const minSize = 10;
     const maxSize = 40;
 
-    // Aumentar tamaño hasta que casi llene el contenedor
+    // Aumentar hasta que esté justo por debajo del máximo permitido
     while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
       size += 0.5;
       el.style.fontSize = size + 'px';
     }
-    // Reducir si nos excedimos pero sin bajar del tamaño mínimo legible
+
+    // Reducir si se excede
     while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > minSize) {
       size -= 0.5;
       el.style.fontSize = size + 'px';
     }
-    if (size < minSize) {
-      el.style.fontSize = minSize + 'px';
-    }
+
+    // Ajuste final
+    if (size < minSize) el.style.fontSize = minSize + 'px';
   };
 
   document.querySelectorAll('.cuadro-icono span').forEach(ajustar);
   document.querySelectorAll('.flip-card-back').forEach(ajustar);
   document.querySelectorAll('.tabla-resultados thead th').forEach(ajustar);
 }
+
 
 window.addEventListener('resize', ajustarTextoCeldas);
 
