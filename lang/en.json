@@ -3,8 +3,9 @@
   "input_placeholder": "Type a mineral...",
   "boton_adivinar": "Guess",
   "propiedades": {
+    "mineral": "Mineral",
     "grupo": "Group",
-    "sistema": "Crystal<br>system",
+    "sistema": "Crystal system",
     "color": "Color",
     "brillo": "Luster",
     "dureza": "Hardness",

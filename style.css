@@ -16,6 +16,17 @@ h1 {
   color: #00e676;
 }
 
+#title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#hello-btn {
+  padding: 0.3em 0.6em;
+  font-size: 1em;
+}
+
 #main-logo {
   width: 100%;
   height: auto;
@@ -104,6 +115,7 @@ input {
   text-align: center;
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: anywhere;
   padding-bottom: 0.3em;
   border: none;
   width: 100px;
@@ -180,6 +192,8 @@ input {
   text-transform: uppercase;
   padding-top: 1.2em;
   overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .flip-card-back::after {
@@ -237,8 +251,9 @@ td.arrow-down .flip-card-back::before {
 
 .numero-intento {
   position: absolute;
-  top: 4px;
-  left: 4px;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 28px;
   height: 28px;
   font-size: 1rem;
@@ -338,6 +353,9 @@ td.arrow-down .flip-card-back::before {
   border-bottom: 1px solid #eee;
   transition: background 0.2s ease;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .autocomplete-items li:hover {
@@ -347,6 +365,13 @@ td.arrow-down .flip-card-back::before {
 .autocomplete-items li:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+.autocomplete-items li img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 #autocomplete-list,
@@ -455,6 +480,18 @@ td.arrow-down .flip-card-back::before {
   display: none;
 }
 
+#footer-links {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+#footer-links a {
+  color: #00e676;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .modal-content {
   background: #2a2a2a;
   padding: 1em 2em;
@@ -533,9 +570,9 @@ th {
   padding: 4px;
   font-weight: bold;
   text-align: center;
-  white-space: pre-wrap;
-  overflow-wrap: normal;
-  word-break: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   line-height: 1.1;
   text-transform: uppercase;
   padding-top: calc(1.2em + 4px);
