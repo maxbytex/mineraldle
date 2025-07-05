@@ -410,45 +410,36 @@ function actualizarTraduccionesTabla() {
 
 function ajustarTextoCeldas() {
   const ajustar = el => {
-    let texto = el.innerText || el.textContent;
+    let texto = el.textContent.trim();
 
-    // Dividir por comas en líneas nuevas
     if (texto.includes(',')) {
       el.innerHTML = texto.split(',').map(p => p.trim()).join('<br>');
+      texto = el.textContent.trim();
     }
 
-    el.style.fontSize = '';
     const minSize = 12;
-    const maxSize = 48;
-    const largo = texto.replace(/<br>/g, '').length;
-    let size = Math.max(minSize, Math.min(maxSize, maxSize - largo));
+    const maxDim = Math.min(el.clientWidth, el.clientHeight);
+    let maxSize = Math.min(48, maxDim * 0.8);
+    let size = maxSize;
     el.style.fontSize = size + 'px';
 
-    const maxW = el.clientWidth - 4;
-    const maxH = el.clientHeight - 4;
-
-    // Reducir si se excede
-    while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > minSize) {
-      size -= 0.5;
+    while ((el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight) && size > minSize) {
+      size -= 1;
       el.style.fontSize = size + 'px';
     }
 
-    // Aumentar si hay espacio extra
-    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
-      size += 0.5;
+    while (el.scrollWidth <= el.clientWidth && el.scrollHeight <= el.clientHeight && size < maxSize) {
+      size += 1;
       el.style.fontSize = size + 'px';
     }
-
-    if (size < minSize) el.style.fontSize = minSize + 'px';
   };
 
-  document.querySelectorAll('.cuadro-icono span').forEach(ajustar);
-  document.querySelectorAll('.flip-card-back').forEach(ajustar);
-  document.querySelectorAll('.tabla-resultados thead th').forEach(ajustar);
+  document.querySelectorAll('.cuadro-icono span, .flip-card-back, .tabla-resultados thead th').forEach(ajustar);
 }
 
 
 window.addEventListener('resize', ajustarTextoCeldas);
+window.addEventListener('load', ajustarTextoCeldas);
 
 function actualizarModalTraducciones() {
   const modal = document.getElementById('modal');
