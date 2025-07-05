@@ -3,8 +3,9 @@
   "input_placeholder": "Escribe un mineral...",
   "boton_adivinar": "Adivinar",
   "propiedades": {
+    "mineral": "Mineral",
     "grupo": "Grupo",
-    "sistema": "Sistema<br>Cristalino",
+    "sistema": "Sistema Cristalino",
     "color": "Color",
     "brillo": "Brillo",
     "dureza": "Dureza",

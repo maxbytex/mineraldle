@@ -79,12 +79,13 @@ function aplicarTraducciones() {
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
   if (traducciones.propiedades) {
-    document.getElementById("th-grupo").innerHTML = traducciones.propiedades.grupo || "Grupo";
-    document.getElementById("th-sistema").innerHTML = traducciones.propiedades.sistema || "Sistema";
-    document.getElementById("th-color").innerHTML = traducciones.propiedades.color || "Color";
-    document.getElementById("th-brillo").innerHTML = traducciones.propiedades.brillo || "Brillo";
-    document.getElementById("th-dureza").innerHTML = traducciones.propiedades.dureza || "Dureza";
-    document.getElementById("th-densidad").innerHTML = traducciones.propiedades.densidad || "Densidad";
+    document.getElementById("th-mineral").innerText = traducciones.propiedades.mineral || "Mineral";
+    document.getElementById("th-grupo").innerText = traducciones.propiedades.grupo || "Grupo";
+    document.getElementById("th-sistema").innerText = traducciones.propiedades.sistema || "Sistema";
+    document.getElementById("th-color").innerText = traducciones.propiedades.color || "Color";
+    document.getElementById("th-brillo").innerText = traducciones.propiedades.brillo || "Brillo";
+    document.getElementById("th-dureza").innerText = traducciones.propiedades.dureza || "Dureza";
+    document.getElementById("th-densidad").innerText = traducciones.propiedades.densidad || "Densidad";
   }
   document.getElementById("counter-label").innerText =
     (traducciones.mensajes?.intentos_restantes || "Intentos: ");
@@ -116,6 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("close-modal").addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
   });
+  const helloBtn = document.getElementById("hello-btn");
+  if (helloBtn) {
+    helloBtn.addEventListener("click", () => alert("Hello World"));
+  }
 });
 
 function iniciarAutocompletado() {
@@ -127,13 +132,13 @@ function iniciarAutocompletado() {
     list.innerHTML = "";
     if (!val) return;
 
-    const coincidencias = minerales.filter(m =>
-      m.nombre.toLowerCase().includes(val)
-    );
+    const coincidencias = minerales
+      .filter(m => m.nombre.toLowerCase().includes(val))
+      .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
     coincidencias.forEach(mineral => {
       const li = document.createElement("li");
-      li.textContent = mineral.nombre;
+      li.innerHTML = `<img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}"> <span>${traducirValor(mineral.nombre)}</span>`;
       li.addEventListener("click", () => {
         input.value = mineral.nombre;
         list.innerHTML = "";
@@ -256,8 +261,7 @@ async function intentarAdivinar() {
 
   setTimeout(() => {
   document.querySelectorAll("#pistas td.texto-auto").forEach(td => {
-    // Extrae texto, ajusta tamaño en función del número de líneas Y ancho
-    const contentLines = td.innerHTML.split("<br>").length;
+    const contentLines = 1;
     const width = td.offsetWidth;
 
     let base = 20; // px
@@ -333,7 +337,7 @@ function comparar(valor, objetivo) {
   const val = Array.isArray(valor) ? valor.map(v => v.toLowerCase()) : [valor.toLowerCase()];
   const obj = Array.isArray(objetivo) ? objetivo.map(o => o.toLowerCase()) : [objetivo.toLowerCase()];
   const coincidencias = val.filter(v => obj.includes(v));
-  const texto = (Array.isArray(valor) ? valor : valor.split(",")).map(v => v.trim()).join("<br>");
+  const texto = (Array.isArray(valor) ? valor : valor.split(",")).map(v => v.trim()).join(", ");
 
   let clase = "rojo";
   if (coincidencias.length === obj.length && val.length === obj.length) {
@@ -420,11 +424,11 @@ function ajustarTextoCeldas() {
     let texto = el.textContent.trim();
 
     if (texto.includes(',')) {
-      el.innerHTML = texto.split(',').map(p => p.trim()).join('<br>');
+      el.innerHTML = texto.split(',').map(p => p.trim()).join(', ');
       texto = el.textContent.trim();
     }
 
-    const lineas = el.innerHTML.split('<br>').length;
+    const lineas = 1;
     const width = el.offsetWidth;
     const len = texto.length;
 

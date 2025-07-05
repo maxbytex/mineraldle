@@ -3,6 +3,7 @@
   "input_placeholder": "鉱物の名前を入力...",
   "boton_adivinar": "予想する",
   "propiedades": {
+    "mineral": "鉱物",
     "grupo": "グループ",
     "sistema": "結晶系",
     "color": "色",
