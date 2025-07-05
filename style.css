@@ -30,7 +30,7 @@ h1 {
 #main-logo {
   width: 100%;
   height: auto;
-  max-width: 250px;
+  max-width: 270px;
   margin-bottom: 0.5em;
   object-fit: contain;
 }
@@ -80,7 +80,7 @@ input {
 /* Contenedor de la tabla con scroll si excede */
 #contenedor-tabla {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: visible;
   display: flex;
   justify-content: center;
 }
@@ -128,6 +128,22 @@ input {
   overflow: hidden;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+@media (min-width: 600px) {
+  .tabla-resultados thead th {
+    width: auto;
+    min-width: auto;
+    max-width: none;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    padding: 0.5em 1em;
+    box-shadow: none;
+    border-bottom: 2px solid #444;
+    font-size: 1.4em;
+  }
 }
 
 /* Celdas */
@@ -252,7 +268,7 @@ td.arrow-down .flip-card-back::before {
 
 .numero-intento {
   position: absolute;
-  left: -16px;
+  left: -40px;
   top: 50%;
   transform: translateY(-50%);
   width: 28px;
