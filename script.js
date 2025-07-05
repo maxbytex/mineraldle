@@ -420,40 +420,44 @@ function actualizarTraduccionesTabla() {
 }
 
 function ajustarTextoCeldas() {
-  const ajustar = el => {
-    let texto = el.textContent.trim();
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
 
-    if (texto.includes(',')) {
-      el.innerHTML = texto.split(',').map(p => p.trim()).join(', ');
-      texto = el.textContent.trim();
-    }
-
-    const lineas = 1;
-    const width = el.offsetWidth;
-    const len = texto.length;
-
-    let base = 20;
-    if (width > 160) base = 28;
-    if (width > 200) base = 32;
-
-    if (lineas > 4) base *= 0.65;
-    else if (lineas > 2) base *= 0.8;
-    else if (lineas === 1) base *= 1.05;
-
-    if (len > 30) base *= 0.6;
-    else if (len > 20) base *= 0.8;
-    else if (len > 12) base *= 0.9;
-
-    el.style.fontSize = `${base}px`;
-
-    let size = base;
-    while ((el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight) && size > 8) {
-      size -= 1;
-      el.style.fontSize = `${size}px`;
-    }
+  const medirTexto = (texto, estilo) => {
+    ctx.font = estilo;
+    return ctx.measureText(texto).width;
   };
 
-  document.querySelectorAll('.cuadro-icono span, .flip-card-back, .tabla-resultados thead th').forEach(ajustar);
+  const ajustar = el => {
+    const comp = window.getComputedStyle(el);
+    let size = parseFloat(comp.fontSize);
+    const fontBase = `${comp.fontStyle} ${comp.fontVariant} ${comp.fontWeight} `;
+    const padding = parseFloat(comp.paddingLeft) + parseFloat(comp.paddingRight);
+    const ancho = el.clientWidth - padding;
+
+    const obtenerLineas = html =>
+      html
+        .replace(/<br\s*\/?>/gi, '\n')
+        .split('\n')
+        .map(l => l.trim())
+        .filter(Boolean);
+
+    const lineas = obtenerLineas(el.innerHTML);
+    if (lineas.length === 0) return;
+
+    let estilo = `${fontBase}${size}px ${comp.fontFamily}`;
+    let maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
+    while (maxWidth > ancho && size > 8) {
+      size -= 1;
+      estilo = `${fontBase}${size}px ${comp.fontFamily}`;
+      maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
+    }
+    el.style.fontSize = `${size}px`;
+  };
+
+  document
+    .querySelectorAll('.cuadro-icono span, .flip-card-back, .tabla-resultados thead th')
+    .forEach(ajustar);
 }
 
 
