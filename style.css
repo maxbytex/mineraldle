@@ -75,6 +75,16 @@ input {
   table-layout: fixed;
 }
 
+/* Cabecera oculta hasta el primer intento */
+.tabla-resultados thead {
+  display: none;
+}
+
+.tabla-resultados.mostrar-cabecera thead {
+  display: table-header-group;
+  animation: fadeIn 0.5s forwards;
+}
+
 
 
 
@@ -90,6 +100,7 @@ input {
   width: 100px;
   min-width: 100px;
   height: 100px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
@@ -99,6 +110,7 @@ input {
   height: 100px;
   min-width: 100px;
   min-height: 100px;
+  aspect-ratio: 1 / 1;
   border: 3px solid #000;
   border-radius: 10px;
   text-align: center;
@@ -318,6 +330,7 @@ td.arrow-down .flip-card-back::before {
     width: 60px;
     min-width: 60px;
     height: 60px;
+    aspect-ratio: 1 / 1;
     white-space: nowrap;
     overflow: hidden;
     font-size: clamp(12px, 3vw, 18px);
@@ -327,6 +340,7 @@ td.arrow-down .flip-card-back::before {
     height: 60px;
     min-width: 60px;
     min-height: 60px;
+    aspect-ratio: 1 / 1;
     font-size: clamp(12px, 4vw, 24px);
   }
   .cuadro-icono {
@@ -381,6 +395,11 @@ td.arrow-down .flip-card-back::before {
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 #modal {

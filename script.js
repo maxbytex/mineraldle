@@ -162,6 +162,11 @@ async function intentarAdivinar() {
     return;
   }
 
+  if (!cabeceraMostrada) {
+    document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
+    cabeceraMostrada = true;
+  }
+
   intentos++;
   updateCounter();
   const numeroIntento = intentos;
