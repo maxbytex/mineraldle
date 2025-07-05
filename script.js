@@ -246,6 +246,7 @@ async function intentarAdivinar() {
   cuerpo.insertBefore(fila, cuerpo.firstChild);
   ajustarTextoCeldas();
   await revealRow(fila);
+  ajustarTextoCeldas();
 
   const gano = mineral.nombre === mineralDelDia.nombre;
   if (gano || intentos >= maxIntentos) {
