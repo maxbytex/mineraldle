@@ -429,6 +429,12 @@ function ajustarTextoCeldas() {
     else if (lineas === 1) base *= 1.05;
 
     el.style.fontSize = `${base}px`;
+
+    let size = base;
+    while ((el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight) && size > 8) {
+      size -= 1;
+      el.style.fontSize = `${size}px`;
+    }
   };
 
   document.querySelectorAll('.cuadro-icono span, .flip-card-back, .tabla-resultados thead th').forEach(ajustar);

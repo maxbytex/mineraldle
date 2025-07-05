@@ -519,8 +519,8 @@ th {
   font-weight: bold;
   text-align: center;
   white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
   line-height: 1.1;
 }
 
