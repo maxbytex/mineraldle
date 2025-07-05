@@ -66,6 +66,12 @@ input {
   border-collapse: collapse;
 }
 
+/* Contenedor de la tabla con scroll si excede */
+#contenedor-tabla {
+  width: 100%;
+  overflow: auto;
+}
+
 /* NUEVO: Estilo general para la tabla de resultados */
 .tabla-resultados {
   border-collapse: separate;
@@ -91,7 +97,7 @@ input {
 /* Cabecera (solo aparece una vez) */
 .tabla-resultados thead th {
   color: #ccc;
-  font-size: 1em;
+  font-size: clamp(14px, 2vw, 28px);
   font-weight: normal;
   text-align: center;
   white-space: normal;
@@ -482,10 +488,6 @@ td.arrow-down .flip-card-back::before {
     width: 100%;
     max-width: none;
   }
-  #contenedor-tabla {
-    width: 100%;
-    overflow-x: auto;
-  }
 
 td {
   text-align: center;
@@ -524,6 +526,9 @@ th {
 
 /* Mejor visibilidad para pantallas grandes */
 @media (min-width: 1000px) {
+  .tabla-resultados thead th {
+    font-size: clamp(18px, 2vw, 40px);
+  }
   .tabla-resultados td {
     font-size: clamp(18px, 2vw, 40px);
   }
