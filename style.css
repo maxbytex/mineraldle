@@ -114,8 +114,8 @@ input {
   font-weight: normal;
   text-align: center;
   white-space: normal;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: break-word;
   padding-bottom: 0.3em;
   border: none;
   width: 100px;
@@ -148,7 +148,8 @@ input {
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
   line-height: 1.1;
 }
 
@@ -192,8 +193,8 @@ input {
   text-transform: uppercase;
   padding-top: 1.2em;
   overflow: hidden;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .flip-card-back::after {
@@ -285,7 +286,8 @@ td.arrow-down .flip-card-back::before {
   color: red;
   text-align: center;
   white-space: normal;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
   -webkit-text-stroke: 0;
   text-shadow: none;
   text-transform: uppercase;
@@ -402,7 +404,8 @@ td.arrow-down .flip-card-back::before {
   .tabla-resultados thead th {
     font-size: clamp(10px, 2.5vw, 16px);
     white-space: normal;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: break-word;
     overflow: hidden;
   }
   .tabla-resultados td {
@@ -544,7 +547,8 @@ td {
   text-align: center;
   vertical-align: middle;
   white-space: normal;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
   overflow: hidden;
   padding: 0.5em;
   font-weight: bold;
@@ -555,7 +559,8 @@ th {
   font-weight: bold;
   padding: 0.75em;
   white-space: normal;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
   text-align: center;
 }
 
@@ -571,8 +576,8 @@ th {
   font-weight: bold;
   text-align: center;
   white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   line-height: 1.1;
   text-transform: uppercase;
   padding-top: calc(1.2em + 4px);
