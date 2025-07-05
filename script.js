@@ -413,16 +413,16 @@ function ajustarTextoCeldas() {
     let texto = el.innerText || el.textContent;
 
     // Dividir por comas en líneas nuevas
-    if (texto.includes(",")) {
-      el.innerHTML = texto.split(",").map(p => p.trim()).join("<br>");
+    if (texto.includes(',')) {
+      el.innerHTML = texto.split(',').map(p => p.trim()).join('<br>');
     }
 
     el.style.fontSize = '';
-    let size = parseFloat(getComputedStyle(el).fontSize);
-    const maxW = el.clientWidth - 6;
-    const maxH = el.clientHeight - 6;
-    const minSize = 10;
-    const maxSize = 40;
+    const minSize = 12;
+    const maxSize = 48;
+    let size = Math.max(parseFloat(getComputedStyle(el).fontSize), minSize);
+    const maxW = el.clientWidth - 4;
+    const maxH = el.clientHeight - 4;
 
     // Aumentar hasta que esté justo por debajo del máximo permitido
     while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
