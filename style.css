@@ -251,7 +251,8 @@ td.arrow-down .flip-card-back::before {
   font-size: 1em;
   color: red;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   -webkit-text-stroke: 0;
   text-shadow: none;
 }
@@ -505,6 +506,7 @@ th {
   padding: 0.75em;
   white-space: normal;
   word-break: break-word;
+  text-align: center;
 }
 
 @media (min-width: 800px) {
