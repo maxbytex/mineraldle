@@ -69,7 +69,9 @@ input {
 /* Contenedor de la tabla con scroll si excede */
 #contenedor-tabla {
   width: 100%;
-  overflow: auto;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -112,6 +114,8 @@ input {
   max-height: 100px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 /* Celdas */
@@ -123,8 +127,9 @@ input {
   max-width: 100px;
   max-height: 100px;
   aspect-ratio: 1 / 1;
-  border: 3px solid #000;
-  border-radius: 10px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   text-align: center;
   vertical-align: middle;
   font-size: clamp(16px, 3vw, 32px);
@@ -172,6 +177,19 @@ input {
 .flip-card-back {
   transform: rotateY(180deg);
   position: relative;
+  text-transform: uppercase;
+  padding-top: 1.2em;
+  overflow: hidden;
+}
+
+.flip-card-back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
 }
 
 .flip-card-back * {
@@ -183,13 +201,13 @@ td.arrow-up .flip-card-back::before,
 td.arrow-down .flip-card-back::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 4px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5em;
-  opacity: 0.2;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+  opacity: 0.9;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
 }
 
 td.arrow-up .flip-card-back::before {
@@ -255,19 +273,24 @@ td.arrow-down .flip-card-back::before {
   word-break: break-word;
   -webkit-text-stroke: 0;
   text-shadow: none;
+  text-transform: uppercase;
 }
 
 /* Colores de comparación */
 .verde {
-  background-color: #2e7d32 !important;
+  background-color: #00c853 !important;
   color: #fff !important;
 }
 .rojo {
-  background-color: #c62828 !important;
+  background-color: #ff1744 !important;
   color: #fff !important;
 }
 .amarillo {
-  background-color: #f9a825 !important;
+  background-color: #ffd600 !important;
+  color: #000 !important;
+}
+.vacio {
+  background-color: #39ff14 !important;
   color: #000 !important;
 }
 
@@ -373,6 +396,7 @@ td.arrow-down .flip-card-back::before {
   }
   .cuadro-icono span {
     font-size: clamp(10px, 3vw, 18px);
+    text-transform: uppercase;
   }
   .cuadro-icono img {
     width: 100%;
@@ -524,6 +548,8 @@ th {
   overflow-wrap: normal;
   word-break: normal;
   line-height: 1.1;
+  text-transform: uppercase;
+  padding-top: calc(1.2em + 4px);
 }
 
 /* Mejor visibilidad para pantallas grandes */
