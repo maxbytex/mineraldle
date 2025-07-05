@@ -279,6 +279,13 @@ async function intentarAdivinar() {
 
 
 function compararClase(valor, objetivo) {
+  if (
+    valor === null ||
+    valor === undefined ||
+    (Array.isArray(valor) && valor.length === 0)
+  ) {
+    return "vacio";
+  }
   const ambosNumeros =
     !Array.isArray(valor) &&
     !Array.isArray(objetivo) &&
