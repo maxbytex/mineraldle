@@ -94,12 +94,16 @@ input {
   font-size: 1em;
   font-weight: normal;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   padding-bottom: 0.3em;
   border: none;
   width: 100px;
   min-width: 100px;
+  max-width: 100px;
   height: 100px;
+  min-height: 100px;
+  max-height: 100px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -110,6 +114,8 @@ input {
   height: 100px;
   min-width: 100px;
   min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   aspect-ratio: 1 / 1;
   border: 3px solid #000;
   border-radius: 10px;
@@ -201,6 +207,8 @@ td.arrow-down .flip-card-back::before {
   height: 100px;
   min-width: 100px;
   min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .numero-intento {
@@ -236,10 +244,10 @@ td.arrow-down .flip-card-back::before {
   transform: translateX(-50%);
   width: 100%;
   font-size: 1em;
-  color: #fff;
+  color: red;
   text-align: center;
   white-space: nowrap;
-  -webkit-text-stroke: 1px #000;
+  -webkit-text-stroke: 0;
   text-shadow: none;
 }
 
@@ -329,9 +337,13 @@ td.arrow-down .flip-card-back::before {
   .tabla-resultados thead th {
     width: 60px;
     min-width: 60px;
+    max-width: 60px;
     height: 60px;
+    min-height: 60px;
+    max-height: 60px;
     aspect-ratio: 1 / 1;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
     overflow: hidden;
     font-size: clamp(12px, 3vw, 18px);
   }
@@ -340,6 +352,8 @@ td.arrow-down .flip-card-back::before {
     height: 60px;
     min-width: 60px;
     min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
     aspect-ratio: 1 / 1;
     font-size: clamp(12px, 4vw, 24px);
   }
@@ -348,6 +362,8 @@ td.arrow-down .flip-card-back::before {
     height: 60px;
     min-width: 60px;
     min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
   }
   .cuadro-icono span {
     font-size: clamp(10px, 3vw, 18px);

@@ -79,12 +79,12 @@ function aplicarTraducciones() {
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
   if (traducciones.propiedades) {
-    document.getElementById("th-grupo").innerText = traducciones.propiedades.grupo || "Grupo";
-    document.getElementById("th-sistema").innerText = traducciones.propiedades.sistema || "Sistema";
-    document.getElementById("th-color").innerText = traducciones.propiedades.color || "Color";
-    document.getElementById("th-brillo").innerText = traducciones.propiedades.brillo || "Brillo";
-    document.getElementById("th-dureza").innerText = traducciones.propiedades.dureza || "Dureza";
-    document.getElementById("th-densidad").innerText = traducciones.propiedades.densidad || "Densidad";
+    document.getElementById("th-grupo").innerHTML = traducciones.propiedades.grupo || "Grupo";
+    document.getElementById("th-sistema").innerHTML = traducciones.propiedades.sistema || "Sistema";
+    document.getElementById("th-color").innerHTML = traducciones.propiedades.color || "Color";
+    document.getElementById("th-brillo").innerHTML = traducciones.propiedades.brillo || "Brillo";
+    document.getElementById("th-dureza").innerHTML = traducciones.propiedades.dureza || "Dureza";
+    document.getElementById("th-densidad").innerHTML = traducciones.propiedades.densidad || "Densidad";
   }
   document.getElementById("counter-label").innerText =
     (traducciones.mensajes?.intentos_restantes || "Intentos: ");

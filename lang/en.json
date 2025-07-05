@@ -4,7 +4,7 @@
   "boton_adivinar": "Guess",
   "propiedades": {
     "grupo": "Group",
-    "sistema": "Crystal system",
+    "sistema": "Crystal<br>system",
     "color": "Color",
     "brillo": "Luster",
     "dureza": "Hardness",
