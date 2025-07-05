@@ -420,15 +420,12 @@ function ajustarTextoCeldas() {
     el.style.fontSize = '';
     const minSize = 12;
     const maxSize = 48;
-    let size = Math.max(parseFloat(getComputedStyle(el).fontSize), minSize);
+    const largo = texto.replace(/<br>/g, '').length;
+    let size = Math.max(minSize, Math.min(maxSize, maxSize - largo));
+    el.style.fontSize = size + 'px';
+
     const maxW = el.clientWidth - 4;
     const maxH = el.clientHeight - 4;
-
-    // Aumentar hasta que esté justo por debajo del máximo permitido
-    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
-      size += 0.5;
-      el.style.fontSize = size + 'px';
-    }
 
     // Reducir si se excede
     while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > minSize) {
@@ -436,7 +433,12 @@ function ajustarTextoCeldas() {
       el.style.fontSize = size + 'px';
     }
 
-    // Ajuste final
+    // Aumentar si hay espacio extra
+    while (el.scrollWidth < maxW && el.scrollHeight < maxH && size < maxSize) {
+      size += 0.5;
+      el.style.fontSize = size + 'px';
+    }
+
     if (size < minSize) el.style.fontSize = minSize + 'px';
   };
 
