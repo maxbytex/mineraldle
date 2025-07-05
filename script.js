@@ -426,6 +426,7 @@ function ajustarTextoCeldas() {
 
     const lineas = el.innerHTML.split('<br>').length;
     const width = el.offsetWidth;
+    const len = texto.length;
 
     let base = 20;
     if (width > 160) base = 28;
@@ -434,6 +435,10 @@ function ajustarTextoCeldas() {
     if (lineas > 4) base *= 0.65;
     else if (lineas > 2) base *= 0.8;
     else if (lineas === 1) base *= 1.05;
+
+    if (len > 30) base *= 0.6;
+    else if (len > 20) base *= 0.8;
+    else if (len > 12) base *= 0.9;
 
     el.style.fontSize = `${base}px`;
 
