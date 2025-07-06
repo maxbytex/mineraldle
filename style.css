@@ -133,7 +133,7 @@ input {
     opacity: 1;
   }
 } 
-/* Ajuste de tamaño de fuente dinámico */
+/* Ajuste de tamaño de fuente dinámico 2*/
 .tabla-resultados thead th,
 .tabla-resultados td {
   font-size: clamp(12px, 2.5vw, 26px); /* Tamaño de fuente dinámico */
