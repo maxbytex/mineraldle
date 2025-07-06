@@ -459,7 +459,7 @@ function ajustarTextoCeldas() {
 
     let estilo = `${fontBase}${size}px ${comp.fontFamily}`;
     let maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
-    while (maxWidth > ancho && size > 8) {
+    while (maxWidth > ancho && size > 6) {
       size -= 1;
       estilo = `${fontBase}${size}px ${comp.fontFamily}`;
       maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
