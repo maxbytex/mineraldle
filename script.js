@@ -178,69 +178,80 @@ async function intentarAdivinar() {
 
   const fila = document.createElement("tr");
 
-  const celdaNombre = crearFlipCell(
-    `<div class="cuadro-icono" data-nombre="${traducirValor(mineral.nombre)}">
-        <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
-        <span>${traducirValor(mineral.nombre)}</span>
-     </div>`,
-    "",
-    "imagen-nombre",
-    mineral.nombre
-  );
-  const spanNum = document.createElement("span");
-  spanNum.className = "numero-intento";
-  spanNum.textContent = `#${numeroIntento}`;
-  celdaNombre.appendChild(spanNum);
-  fila.appendChild(celdaNombre);
+const celdaNombre = crearFlipCell(
+  `<div class="cuadro-icono" data-nombre="${traducirValor(mineral.nombre)}">
+      <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
+   </div>`,
+  "",
+  "imagen-nombre",
+  mineral.nombre
+);
+const spanNum = document.createElement("span");
+spanNum.className = "numero-intento";
+spanNum.textContent = `#${numeroIntento}`;
+celdaNombre.appendChild(spanNum);
+fila.appendChild(celdaNombre);
 
-  fila.appendChild(
-    crearFlipCell(
+// Mostrar GRUPO en líneas
+fila.appendChild(
+  crearFlipCell(
+    traducirLista(mineral.grupo).join("<br>"),
+    compararClase(mineral.grupo, mineralDelDia.grupo),
+    "",
+    mineral.grupo
+  )
+);
+
+// Mostrar SISTEMA en líneas
+fila.appendChild(
+  crearFlipCell(
+    traducirLista(mineral.sistema).join("<br>"),
+    compararClase(mineral.sistema, mineralDelDia.sistema),
+    "",
+    mineral.sistema
+  )
+);
+
+// Mostrar COLOR en líneas
+fila.appendChild(
+  crearFlipCell(
     traducirLista(mineral.color).join("<br>"),
-      compararClase(mineral.grupo, mineralDelDia.grupo),
-      "",
-      mineral.grupo
-    )
-  );
-  fila.appendChild(
-    crearFlipCell(
-      traducirLista(mineral.sistema).join(", "),
-      compararClase(mineral.sistema, mineralDelDia.sistema),
-      "",
-      mineral.sistema
-    )
-  );
-  fila.appendChild(
-    crearFlipCell(
-      traducirLista(mineral.color).join(", "),
-      compararClase(mineral.color, mineralDelDia.color),
-      "",
-      mineral.color
-    )
-  );
-  fila.appendChild(
-    crearFlipCell(
-      traducirLista(mineral.brillo).join(", "),
-      compararClase(mineral.brillo, mineralDelDia.brillo),
-      "",
-      mineral.brillo
-    )
-  );
-  fila.appendChild(
-    crearFlipCell(
-      mineral.dureza,
-      compararClase(mineral.dureza, mineralDelDia.dureza),
-      direccionFlecha(mineral.dureza, mineralDelDia.dureza),
-      mineral.dureza
-    )
-  );
-  fila.appendChild(
-    crearFlipCell(
-      mineral.densidad,
-      compararClase(mineral.densidad, mineralDelDia.densidad),
-      direccionFlecha(mineral.densidad, mineralDelDia.densidad),
-      mineral.densidad
-    )
-  );
+    compararClase(mineral.color, mineralDelDia.color),
+    "",
+    mineral.color
+  )
+);
+
+// Mostrar BRILLO en líneas
+fila.appendChild(
+  crearFlipCell(
+    traducirLista(mineral.brillo).join("<br>"),
+    compararClase(mineral.brillo, mineralDelDia.brillo),
+    "",
+    mineral.brillo
+  )
+);
+
+// DUREZA (sin <br> porque es número)
+fila.appendChild(
+  crearFlipCell(
+    mineral.dureza,
+    compararClase(mineral.dureza, mineralDelDia.dureza),
+    direccionFlecha(mineral.dureza, mineralDelDia.dureza),
+    mineral.dureza
+  )
+);
+
+// DENSIDAD (sin <br> porque es número)
+fila.appendChild(
+  crearFlipCell(
+    mineral.densidad,
+    compararClase(mineral.densidad, mineralDelDia.densidad),
+    direccionFlecha(mineral.densidad, mineralDelDia.densidad),
+    mineral.densidad
+  )
+);
+
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
