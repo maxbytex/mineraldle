@@ -170,6 +170,7 @@ async function intentarAdivinar() {
   if (!cabeceraMostrada) {
     document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
     cabeceraMostrada = true;
+    ajustarTextoCeldas();
   }
 
   intentos++;
