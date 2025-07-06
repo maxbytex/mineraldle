@@ -8,6 +8,7 @@ body {
   align-items: center;
   padding: 2em;
   margin: 0;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -80,9 +81,13 @@ input {
 /* Contenedor de la tabla con scroll si excede */
 #contenedor-tabla {
   width: 100%;
-  overflow-x: visible;
-  display: flex;
-  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 40px;
+  box-sizing: border-box;
+  display: block;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -92,6 +97,7 @@ input {
   font-size: 1em; /* Tamaño base de fuente de la tabla; ajusta aquí */
   margin: 2em 0;
   table-layout: fixed;
+  width: max-content;
 }
 
 /* Cabecera oculta hasta el primer intento */
@@ -118,7 +124,7 @@ input {
   background-color: transparent;
   width: 85px;
   height: 85px;
-  font-size: clamp(14px, 3vw, 28px); /* Aumentado para mayor visibilidad */
+  font-size: clamp(14px, 4vw, 32px);
   line-height: 1.2;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -136,7 +142,7 @@ input {
     padding: 0.5em 1em;
     box-shadow: none;
     border-bottom: 4px solid white;
-    font-size: 1.4em;
+    font-size: clamp(16px, 2vw, 32px);
   }
 }
 
@@ -249,7 +255,7 @@ td.arrow-down .flip-card-back::before {
 
 .numero-intento {
   position: absolute;
-  left: -40px;
+  left: -32px;
   top: 50%;
   transform: translateY(-50%);
   width: 28px;
@@ -404,7 +410,7 @@ td.arrow-down .flip-card-back::before {
     aspect-ratio: 1 / 1;
   }
   .tabla-resultados thead th {
-    font-size: clamp(10px, 2.5vw, 16px);
+    font-size: clamp(10px, 5vw, 20px);
     white-space: normal;
     word-break: normal;
     overflow-wrap: break-word;
