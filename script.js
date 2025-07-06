@@ -447,6 +447,7 @@ function ajustarTextoCeldas() {
     const fontBase = `${comp.fontStyle} ${comp.fontVariant} ${comp.fontWeight} `;
     const padding = parseFloat(comp.paddingLeft) + parseFloat(comp.paddingRight);
     const ancho = el.clientWidth - padding;
+    if (ancho <= 0) return; // Skip if element is hidden
 
     const obtenerLineas = html =>
       html
