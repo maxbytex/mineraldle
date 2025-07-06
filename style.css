@@ -605,7 +605,7 @@ th {
   line-height: 1.2;
 }
 
-/* Mejor visibilidad para pantallas grandes */
+/* Mejor visibilidad para pantallas grandes D*/
 @media (min-width: 1000px) {
   .tabla-resultados thead th {
     font-size: clamp(18px, 2vw, 40px);
@@ -633,6 +633,7 @@ th {
     max-height: 100%;
     object-fit: contain;
   }
+
 
 }
 
