@@ -87,16 +87,8 @@ input {
   padding-right: 0;
   margin: 0 auto;
   box-sizing: border-box;
-  display: block;
-  touch-action: pan-x;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (min-width: 1000px) {
-  #contenedor-tabla {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -117,66 +109,27 @@ input {
 .tabla-resultados.mostrar-cabecera thead {
   display: table-header-group;
   animation: fadeIn 0.5s forwards;
-  /* La animación se revela más suave */
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0.2s; /* Pequeño retraso para que se vea más fluido */
-  animation-name: fadeIn;
 }
 
-/*Ajusta el tamaño de la fuente de la cabecera al igual que el tabla resultados con texto dinámico*/
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-} 
-/* Ajuste de tamaño de fuente dinámico 2*/
-.tabla-resultados thead th,
-.tabla-resultados td {
-  font-size: clamp(12px, 2.5vw, 26px); /* Tamaño de fuente dinámico */
-  line-height: 1.2; /* Mejora la legibilidad */
-}
-/* Ajuste de tamaño de fuente dinámico para pantallas grandes */
-@media (min-width: 1000px) {
-  .tabla-resultados thead th,
-  .tabla-resultados td {
-    font-size: clamp(18px, 2.5vw, 40px); /* Tamaño de fuente dinámico para pantallas grandes */
-  }
-}
-/* Ajuste de tamaño de fuente dinámico para pantallas pequeñas */
-@media (max-width: 600px) {
-  .tabla-resultados thead th,
-  .tabla-resultados td {
-    font-size: clamp(10px, 4vw, 22px); /* Tamaño de fuente dinámico para pantallas pequeñas */
-  }
-}
-/* Estilo de la tabla de resultados  b*/
+
 
 
 /* Cabecera (solo aparece una vez) */
 .tabla-resultados thead th {
-  width: 85px;
-  height: 85px;
-  max-width: 85px;
-  max-height: 85px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  padding: 0;
-  margin: 0;
-  white-space: normal;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  overflow: hidden;
-  font-size: 24px;
+  padding: 0.4em;
+  border-bottom: 4px solid white;
+  background-color: transparent;
+  width: 85px;
+  height: 85px;
+  font-size: clamp(8px, 2.5vw, 26px);
   line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
-
 
 @media (min-width: 600px) {
   .tabla-resultados thead th {
@@ -305,10 +258,9 @@ td.arrow-down .flip-card-back::before {
 }
 
 .imagen-nombre img {
-  width: 100%;
-  height: 100%;
+  width: 85px;
+  height: 85px;
   object-fit: contain;
-  display: block;
 }
 
 

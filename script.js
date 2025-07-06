@@ -168,14 +168,9 @@ async function intentarAdivinar() {
   }
 
   if (!cabeceraMostrada) {
-  document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
-  cabeceraMostrada = true;
-
-  // Esperamos a que termine la animación de fadeIn para que los <th> tengan tamaño visible
-  setTimeout(() => {
-    ajustarTextoCeldas();
-  }, 300); // 300ms porque el fadeIn dura 0.5s, ajustamos justo después del comienzo
-}
+    document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
+    cabeceraMostrada = true;
+  }
 
   intentos++;
   updateCounter();
@@ -450,13 +445,7 @@ function ajustarTextoCeldas() {
     let size = parseFloat(comp.fontSize);
     const fontBase = `${comp.fontStyle} ${comp.fontVariant} ${comp.fontWeight} `;
     const padding = parseFloat(comp.paddingLeft) + parseFloat(comp.paddingRight);
-    let ancho = el.clientWidth - padding;
-    if (ancho <= 0) {
-    el.style.display = 'inline-block'; // Forzar render temporal
-    ancho = el.clientWidth - padding;
-    el.style.display = ''; // Revertir
-    if (ancho <= 0) return;
-  }
+    const ancho = el.clientWidth - padding;
 
     const obtenerLineas = html =>
       html
@@ -470,7 +459,7 @@ function ajustarTextoCeldas() {
 
     let estilo = `${fontBase}${size}px ${comp.fontFamily}`;
     let maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
-    while (maxWidth > ancho && size > 16) {
+    while (maxWidth > ancho && size > 6) {
       size -= 1;
       estilo = `${fontBase}${size}px ${comp.fontFamily}`;
       maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
