@@ -179,7 +179,7 @@ async function intentarAdivinar() {
   const fila = document.createElement("tr");
 
   const celdaNombre = crearFlipCell(
-    `<div class="cuadro-icono">
+    `<div class="cuadro-icono" data-nombre="${traducirValor(mineral.nombre)}">
         <img src="img/${mineral.nombre.toLowerCase()}.png" alt="${traducirValor(mineral.nombre)}" />
         <span>${traducirValor(mineral.nombre)}</span>
      </div>`,
@@ -195,7 +195,7 @@ async function intentarAdivinar() {
 
   fila.appendChild(
     crearFlipCell(
-      traducirLista(mineral.grupo).join(", "),
+    traducirLista(mineral.color).join("<br>"),
       compararClase(mineral.grupo, mineralDelDia.grupo),
       "",
       mineral.grupo
