@@ -168,10 +168,14 @@ async function intentarAdivinar() {
   }
 
   if (!cabeceraMostrada) {
-    document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
-    cabeceraMostrada = true;
+  document.getElementById("tablaResultados").classList.add("mostrar-cabecera");
+  cabeceraMostrada = true;
+
+  // Esperamos a que termine la animación de fadeIn para que los <th> tengan tamaño visible
+  setTimeout(() => {
     ajustarTextoCeldas();
-  }
+  }, 300); // 300ms porque el fadeIn dura 0.5s, ajustamos justo después del comienzo
+}
 
   intentos++;
   updateCounter();
@@ -466,7 +470,7 @@ function ajustarTextoCeldas() {
 
     let estilo = `${fontBase}${size}px ${comp.fontFamily}`;
     let maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
-    while (maxWidth > ancho && size > 12) {
+    while (maxWidth > ancho && size > 16) {
       size -= 1;
       estilo = `${fontBase}${size}px ${comp.fontFamily}`;
       maxWidth = Math.max(...lineas.map(l => medirTexto(l, estilo)));
