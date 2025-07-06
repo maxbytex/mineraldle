@@ -83,11 +83,12 @@ input {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-left: 40px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 auto;
   box-sizing: border-box;
-  display: block;
-  touch-action: pan-x;
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  justify-content: center;
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -254,6 +255,12 @@ td.arrow-down .flip-card-back::before {
   padding: 0;
   position: relative;
   overflow: visible;
+}
+
+.imagen-nombre img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
 }
 
 
@@ -611,8 +618,22 @@ th {
   }
 }
 
+@media (min-width: 1000px) {
+  #contenedor-tabla {
+    justify-content: center;
+  }
 
+  .tabla-resultados {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .flip-card-back img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 
+}
 
 }
