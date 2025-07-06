@@ -87,8 +87,16 @@ input {
   padding-right: 0;
   margin: 0 auto;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  display: block;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1000px) {
+  #contenedor-tabla {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -258,9 +266,10 @@ td.arrow-down .flip-card-back::before {
 }
 
 .imagen-nombre img {
-  width: 85px;
-  height: 85px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  display: block;
 }
 
 
