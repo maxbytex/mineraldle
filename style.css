@@ -169,6 +169,10 @@ input {
   text-transform: none;
 }
 
+.tabla-resultados td.imagen-nombre {
+  overflow: visible;
+}
+
 /* Flip card effect */
 .flip-card {
   perspective: 600px;
