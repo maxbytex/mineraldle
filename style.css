@@ -124,21 +124,23 @@ input {
 
 /* Cabecera (solo aparece una vez) */
 .tabla-resultados thead th {
-  font-size: 26px; /* valor inicial alto */
-  white-space: normal;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  text-align: center;
-  line-height: 1.2;
-  padding: 0.4em;
-  height: 85px;
   width: 85px;
+  height: 85px;
   max-width: 85px;
   max-height: 85px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  font-size: 24px; /* base, será reajustada */
+  line-height: 1.2;
 }
 
 @media (min-width: 600px) {
