@@ -160,7 +160,7 @@ input {
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   text-align: center;
   vertical-align: middle;
-  font-size: clamp(12px, 2.5vw, 26px);
+  font-size: clamp(8px, 2.5vw, 26px);
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -417,7 +417,7 @@ td.arrow-down .flip-card-back::before {
     overflow: hidden;
   }
   .tabla-resultados td {
-    font-size: clamp(10px, 4vw, 20px);
+    font-size: clamp(8px, 4vw, 20px);
   }
   .cuadro-icono span {
     font-size: clamp(8px, 3vw, 16px);
@@ -441,6 +441,7 @@ td.arrow-down .flip-card-back::before {
 #counter {
   font-size: 1.2em;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 #timer {
@@ -544,6 +545,7 @@ td.arrow-down .flip-card-back::before {
   }
   #counter {
     margin-bottom: 0.5em;
+    color: #ffffff;
   }
   .autocomplete-container,
   input {
