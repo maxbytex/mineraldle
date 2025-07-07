@@ -49,12 +49,6 @@ function mostrarModal(gano) {
   if (gano) confettiExplosion();
 }
 
-function mostrarFuegos() {
-  const fw = document.getElementById("fireworks");
-  fw.classList.remove("hidden");
-  setTimeout(() => fw.classList.add("hidden"), 2000);
-}
-
 function confettiExplosion() {
   const canvas = document.getElementById('confetti-canvas');
   if (!canvas) return;
@@ -64,16 +58,26 @@ function confettiExplosion() {
   canvas.classList.remove('hidden');
 
   const particles = [];
-  for (let i = 0; i < 120; i++) {
-    particles.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: (Math.random() - 0.5) * 10,
-      vy: (Math.random() - 0.7) * 10,
-      size: Math.random() * 6 + 4,
-      color: `hsl(${Math.random() * 360},100%,50%)`,
-      life: 80 + Math.random() * 20
-    });
+
+  function createExplosion(x, y) {
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 10,
+        vy: (Math.random() - 0.7) * 10,
+        size: Math.random() * 6 + 4,
+        color: `hsl(${Math.random() * 360},100%,50%)`,
+        life: 80 + Math.random() * 20
+      });
+    }
+  }
+
+  for (let i = 0; i < 5; i++) {
+    createExplosion(
+      Math.random() * canvas.width,
+      Math.random() * canvas.height
+    );
   }
 
   function draw() {
@@ -311,8 +315,7 @@ fila.appendChild(
     juegoTerminado = true;
     deshabilitarJuego();
     if (gano) {
-      mostrarFuegos();
-      setTimeout(() => mostrarModal(true), 2000);
+      mostrarModal(true);
     } else {
       mostrarModal(false);
     }
