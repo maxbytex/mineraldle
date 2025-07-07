@@ -55,8 +55,9 @@ function confettiExplosion() {
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  canvas.classList.remove('hidden', 'fade-out');
+  canvas.classList.remove('hidden');
   canvas.classList.add('fade-in');
+  canvas.style.opacity = '1';
 
   const particles = [];
 
@@ -89,6 +90,21 @@ function confettiExplosion() {
   }
   triggerExplosion();
 
+  function fadeOutCanvas() {
+    let opacity = 1;
+    function step() {
+      opacity -= 0.05;
+      canvas.style.opacity = opacity;
+      if (opacity <= 0) {
+        canvas.style.opacity = '';
+        canvas.classList.add('hidden');
+      } else {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
@@ -110,10 +126,7 @@ function confettiExplosion() {
       requestAnimationFrame(draw);
     } else {
       canvas.classList.remove('fade-in');
-      canvas.classList.add('fade-out');
-      canvas.addEventListener('animationend', () => {
-        canvas.classList.add('hidden');
-      }, { once: true });
+      fadeOutCanvas();
     }
   }
 
