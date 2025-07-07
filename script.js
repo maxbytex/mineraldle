@@ -55,30 +55,39 @@ function confettiExplosion() {
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  canvas.classList.remove('hidden');
+  canvas.classList.remove('hidden', 'fade-out');
+  canvas.classList.add('fade-in');
 
   const particles = [];
 
   function createExplosion(x, y) {
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 150; i++) {
+      const life = 100 + Math.random() * 20;
       particles.push({
         x,
         y,
-        vx: (Math.random() - 0.5) * 10,
-        vy: (Math.random() - 0.7) * 10,
+        vx: (Math.random() - 0.5) * 15,
+        vy: (Math.random() - 0.7) * 15,
         size: Math.random() * 6 + 4,
         color: `hsl(${Math.random() * 360},100%,50%)`,
-        life: 80 + Math.random() * 20
+        life,
+        ttl: life
       });
     }
   }
 
-  for (let i = 0; i < 5; i++) {
+  let explosions = 0;
+  function triggerExplosion() {
     createExplosion(
       Math.random() * canvas.width,
       Math.random() * canvas.height
     );
+    explosions++;
+    if (explosions < 5) {
+      setTimeout(triggerExplosion, 1000);
+    }
   }
+  triggerExplosion();
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -87,8 +96,10 @@ function confettiExplosion() {
       p.y += p.vy;
       p.vy += 0.2;
       p.life--;
+      ctx.globalAlpha = p.life / p.ttl;
       ctx.fillStyle = p.color;
       ctx.fillRect(p.x, p.y, p.size, p.size);
+      ctx.globalAlpha = 1;
     });
     for (let i = particles.length - 1; i >= 0; i--) {
       if (particles[i].life <= 0 || particles[i].y > canvas.height) {
@@ -98,7 +109,11 @@ function confettiExplosion() {
     if (particles.length) {
       requestAnimationFrame(draw);
     } else {
-      canvas.classList.add('hidden');
+      canvas.classList.remove('fade-in');
+      canvas.classList.add('fade-out');
+      canvas.addEventListener('animationend', () => {
+        canvas.classList.add('hidden');
+      }, { once: true });
     }
   }
 

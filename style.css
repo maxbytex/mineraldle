@@ -472,6 +472,14 @@ td.arrow-down .flip-card-back::before {
   z-index: 2500;
 }
 
+#confetti-canvas.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+#confetti-canvas.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
