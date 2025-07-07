@@ -46,12 +46,59 @@ function mostrarModal(gano) {
   document.getElementById("modal-intentos").innerText =
     (traducciones.mensajes?.intentos || "Intentos:") + " " + intentos;
   modal.classList.remove("hidden");
+  if (gano) confettiExplosion();
 }
 
 function mostrarFuegos() {
   const fw = document.getElementById("fireworks");
   fw.classList.remove("hidden");
   setTimeout(() => fw.classList.add("hidden"), 2000);
+}
+
+function confettiExplosion() {
+  const canvas = document.getElementById('confetti-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.classList.remove('hidden');
+
+  const particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      vx: (Math.random() - 0.5) * 10,
+      vy: (Math.random() - 0.7) * 10,
+      size: Math.random() * 6 + 4,
+      color: `hsl(${Math.random() * 360},100%,50%)`,
+      life: 80 + Math.random() * 20
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.2;
+      p.life--;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+    });
+    for (let i = particles.length - 1; i >= 0; i--) {
+      if (particles[i].life <= 0 || particles[i].y > canvas.height) {
+        particles.splice(i, 1);
+      }
+    }
+    if (particles.length) {
+      requestAnimationFrame(draw);
+    } else {
+      canvas.classList.add('hidden');
+    }
+  }
+
+  requestAnimationFrame(draw);
 }
 
 function traducirValor(valor) {
