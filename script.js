@@ -17,7 +17,10 @@ function updateTimer() {
   const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
   const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
   const label = traducciones.mensajes?.proximo_mineral || 'Siguiente mineral en:';
-  document.getElementById('timer').innerText = `${label} ${h}:${m}:${s}`;
+  const texto = `${label} ${h}:${m}:${s}`;
+  document.getElementById('timer').innerText = texto;
+  const dbg = document.getElementById('debug-timer');
+  if (dbg) dbg.innerText = texto;
 }
 
 function updateCounter() {
@@ -198,7 +201,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const helloBtn = document.getElementById("hello-btn");
   if (helloBtn) {
-    helloBtn.addEventListener("click", () => alert("Hello World"));
+    helloBtn.addEventListener("click", () => {
+      const dbgModal = document.getElementById("debug-modal");
+      const dbgMineral = document.getElementById("debug-mineral");
+      if (dbgModal && dbgMineral && mineralDelDia) {
+        dbgMineral.innerText =
+          (traducciones.mensajes?.mineral_era || "El mineral era:") +
+          " " +
+          traducirValor(mineralDelDia.nombre);
+        dbgModal.classList.remove("hidden");
+      }
+    });
+  }
+  const closeDbg = document.getElementById("close-debug");
+  if (closeDbg) {
+    closeDbg.addEventListener("click", () => {
+      document.getElementById("debug-modal").classList.add("hidden");
+    });
   }
 });
 
