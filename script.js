@@ -83,8 +83,8 @@ function confettiExplosion() {
   let explosions = 0;
   function triggerExplosion() {
     createExplosion(
-      Math.random() * canvas.width,
-      Math.random() * canvas.height
+      canvas.width / 2,
+      canvas.height / 2
     );
     explosions++;
     if (explosions < 5) {
@@ -181,6 +181,11 @@ function aplicarTraducciones() {
 document.addEventListener("DOMContentLoaded", () => {
   const guardado = localStorage.getItem("idioma") || "es";
   setIdioma(guardado);
+  const langSelect = document.getElementById('language-select');
+  if (langSelect) {
+    langSelect.value = guardado;
+    langSelect.addEventListener('change', e => setIdioma(e.target.value));
+  }
   updateCounter();
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
@@ -217,6 +222,19 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeDbg) {
     closeDbg.addEventListener("click", () => {
       document.getElementById("debug-modal").classList.add("hidden");
+    });
+  }
+
+  const aboutLink = document.getElementById('about-link');
+  const aboutModal = document.getElementById('about-modal');
+  const closeAbout = document.getElementById('close-about');
+  if (aboutLink && aboutModal && closeAbout) {
+    aboutLink.addEventListener('click', e => {
+      e.preventDefault();
+      aboutModal.classList.remove('hidden');
+    });
+    closeAbout.addEventListener('click', () => {
+      aboutModal.classList.add('hidden');
     });
   }
 });

@@ -36,8 +36,11 @@ h1 {
   object-fit: contain;
 }
 
-#language-selector {
-  margin-bottom: 1em;
+#language-select {
+  margin-left: 0.5em;
+  padding: 0.3em 0.6em;
+  font-size: 1em;
+  border-radius: 6px;
 }
 
 button {
@@ -508,9 +511,23 @@ td.arrow-down .flip-card-back::before {
   z-index: 2000;
 }
 
+#about-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
 #modal.hidden,
 #confetti-canvas.hidden,
-#debug-modal.hidden {
+#debug-modal.hidden,
+#about-modal.hidden {
   display: none;
 }
 
@@ -631,6 +648,7 @@ th {
 @media (min-width: 1000px) {
   #contenedor-tabla {
     justify-content: center;
+    padding-left: 0;
   }
 
   .tabla-resultados {
@@ -646,5 +664,4 @@ th {
 
 
 }
-
 }
