@@ -13,12 +13,11 @@
   <div id="title-container">
     <h1 id="titulo">Mineraldle</h1>
     <button id="hello-btn">?</button>
-  </div>
-
-  <div id="language-selector">
-    <button onclick="setIdioma('es')">🇪🇸</button>
-    <button onclick="setIdioma('en')">🇬🇧</button>
-    <button onclick="setIdioma('ja')">🇯🇵</button>
+    <select id="language-select">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="ja">🇯🇵 日本語</option>
+    </select>
   </div>
 
   <div id="form-container">
@@ -71,10 +70,16 @@
     </div>
   </div>
 
+  <div id="about-modal" class="hidden">
+    <div class="modal-content">
+      <span id="close-about" class="close">&times;</span>
+      <p>Hello World</p>
+    </div>
+  </div>
+
   <canvas id="confetti-canvas" class="hidden"></canvas>
 
   <div id="footer-links">
     <a href="https://x.com/AzaleaDevs" id="twitter-link" target="_blank">Twitter</a>
     <a href="https://ko-fi.com/azaleadevs" id="kofi-link" target="_blank">Ko-fi</a>
-    <a href="#" id="about-link">About me</a>
-  </div></body></html>
+    <a href="#" id="about-link">About me</a>  </div></body></html>
