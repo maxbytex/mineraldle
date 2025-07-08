@@ -353,6 +353,7 @@ fila.appendChild(
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
+  document.getElementById('contenedor-tabla').scrollLeft = 0;
   ajustarTextoCeldas();
   await revealRow(fila);
   ajustarTextoCeldas();
