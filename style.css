@@ -648,7 +648,7 @@ th {
 @media (min-width: 1000px) {
   #contenedor-tabla {
     justify-content: center;
-    padding-left: 0;
+    padding-left: 32px;
   }
 
   .tabla-resultados {
@@ -663,5 +663,4 @@ th {
   }
 
 
-}
-}
+}}
