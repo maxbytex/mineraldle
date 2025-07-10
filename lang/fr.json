@@ -2,6 +2,7 @@
   "titulo": "Devine le Minéral",
   "input_placeholder": "Tape un minéral...",
   "boton_adivinar": "Deviner",
+  "boton_compartir": "Partager",
   "propiedades": {
     "mineral": "Minéral",
     "grupo": "Groupe",
@@ -19,7 +20,9 @@
     "mineral_era": "Le minéral était :",
     "intentos": "Essais :",
     "intentos_restantes": "Essais restants :",
-    "proximo_mineral": "Prochain minéral dans :"
+    "proximo_mineral": "Prochain minéral dans :",
+    "compartir_titulo": "J'ai deviné le Mineraldle d'aujourd'hui !",
+    "compartir_invitar": "Devine-le maintenant sur : azaleadevs.github.io/mineraldle"
   },
   "valores": {
     "cuarzo": "Quartz",

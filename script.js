@@ -48,6 +48,11 @@ function mostrarModal(gano) {
   document.getElementById("modal-img").alt = traducirValor(mineralDelDia.nombre);
   document.getElementById("modal-intentos").innerText =
     (traducciones.mensajes?.intentos || "Intentos:") + " " + intentos;
+  const shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    shareBtn.style.display = gano ? "block" : "none";
+    shareBtn.innerText = traducciones.boton_compartir || "Share";
+  }
   modal.classList.remove("hidden");
   if (gano) confettiExplosion();
 }
@@ -160,6 +165,10 @@ function aplicarTraducciones() {
   document.getElementById("titulo").innerText = traducciones.titulo || "Mineraldle";
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
+  const shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    shareBtn.innerText = traducciones.boton_compartir || "Share";
+  }
   if (traducciones.propiedades) {
     document.getElementById("th-mineral").innerText = traducciones.propiedades.mineral || "Mineral";
     document.getElementById("th-grupo").innerText = traducciones.propiedades.grupo || "Grupo";
@@ -236,6 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
     closeAbout.addEventListener('click', () => {
       aboutModal.classList.add('hidden');
     });
+  }
+
+  const shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', compartirEnTwitter);
   }
 });
 
@@ -605,4 +619,33 @@ function actualizarModalTraducciones() {
   document.getElementById('modal-img').alt = traducirValor(mineralDelDia.nombre);
   document.getElementById('modal-intentos').innerText =
     (traducciones.mensajes?.intentos || 'Intentos:') + ' ' + intentos;
+  const shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.innerText = traducciones.boton_compartir || 'Share';
+  }
+}
+
+function generarEmojisResultado() {
+  const filas = Array.from(document.querySelectorAll('#tabla-cuerpo tr')).reverse();
+  const numeros = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
+  return filas.map((fila, idx) => {
+    const celdas = fila.querySelectorAll('.flip-card');
+    let linea = numeros[idx + 1] || '';
+    for (let i = 1; i < celdas.length; i++) {
+      const back = celdas[i].querySelector('.flip-card-back');
+      if (back.classList.contains('verde')) linea += '🟩';
+      else if (back.classList.contains('amarillo')) linea += '🟨';
+      else linea += '🟥';
+    }
+    return linea;
+  }).join('\n');
+}
+
+function compartirEnTwitter() {
+  const titulo = traducciones.mensajes?.compartir_titulo || 'I guessed today\'s Mineraldle!';
+  const invitacion = traducciones.mensajes?.compartir_invitar || 'Play now at: azaleadevs.github.io/mineraldle';
+  const grid = generarEmojisResultado();
+  const texto = `${titulo}\n${grid}\n${invitacion}`;
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
 }
