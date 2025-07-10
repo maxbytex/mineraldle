@@ -641,11 +641,17 @@ function generarEmojisResultado() {
   }).join('\n');
 }
 
-function compartirEnTwitter() {
-  const titulo = traducciones.mensajes?.compartir_titulo || 'I guessed today\'s Mineraldle!';
+function compartirEnTwitter(e) {
+  if (e) e.preventDefault();
+  const titulo = traducciones.mensajes?.compartir_titulo || "I guessed today's Mineraldle!";
   const invitacion = traducciones.mensajes?.compartir_invitar || 'Play now at: azaleadevs.github.io/mineraldle';
   const grid = generarEmojisResultado();
   const texto = `${titulo}\n${grid}\n${invitacion}`;
   const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(texto)}`;
-  window.open(url, '_blank');
+  const enlace = document.getElementById('share-btn');
+  if (enlace) enlace.href = url;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(texto).catch(() => {});
+  }
+  window.open(url, '_blank', 'noopener');
 }
