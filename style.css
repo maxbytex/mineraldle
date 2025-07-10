@@ -29,8 +29,14 @@ h1 {
 }
 
 #hello-btn {
-  padding: 0.3em 0.6em;
-  font-size: 1em;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+#hello-btn img {
+  height: 32px;
+  width: 32px;
 }
 
 #main-logo {
@@ -54,6 +60,7 @@ h1 {
   padding-left: 1.6em;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center left;
 }
 
 #language-select .flag-es { background-image: url("screen/spain_flag.png"); }
@@ -153,7 +160,7 @@ input {
   background-color: transparent;
   width: 85px;
   height: 85px;
-  font-size: clamp(8px, 2.5vw, 26px);
+  font-size: clamp(16px, 2.5vw, 34px);
   line-height: 1.2;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -171,7 +178,7 @@ input {
     padding: 0.5em 1em;
     box-shadow: none;
     border-bottom: 4px solid white;
-    font-size: clamp(8px, 2.5vw, 26px);
+    font-size: clamp(16px, 2.5vw, 34px);
   }
 }
 
@@ -457,7 +464,7 @@ td.arrow-down .flip-card-back::before {
     aspect-ratio: 1 / 1;
   }
   .tabla-resultados thead th {
-    font-size: clamp(10px, 4vw, 22px);
+    font-size: clamp(18px, 4vw, 30px);
     white-space: normal;
     word-break: normal;
     overflow-wrap: break-word;
@@ -575,7 +582,7 @@ td.arrow-down .flip-card-back::before {
 }
 
 #footer-links img {
-  height: 24px;
+  height: 72px;
 }
 
 #share-btn {
@@ -681,7 +688,7 @@ th {
 /* Mejor visibilidad para pantallas grandes D*/
 @media (min-width: 1000px) {
   .tabla-resultados thead th {
-    font-size: clamp(18px, 2vw, 40px);
+    font-size: clamp(26px, 2vw, 48px);
   }
   .tabla-resultados td {
     font-size: clamp(18px, 2vw, 40px);
