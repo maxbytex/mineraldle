@@ -46,7 +46,26 @@ h1 {
   padding: 0.3em 0.6em;
   font-size: 1em;
   border-radius: 6px;
+  height: 1.7em;
 }
+
+#language-select option {
+  font-size: 0;
+  padding-left: 1.6em;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#language-select .flag-es { background-image: url("screen/spain_flag.png"); }
+#language-select .flag-eu { background-image: url("screen/euskera_flag.png"); }
+#language-select .flag-gl { background-image: url("screen/galicia_flag.png"); }
+#language-select .flag-ca { background-image: url("screen/catalonia_flag.png"); }
+#language-select .flag-fr { background-image: url("screen/france_flag.png"); }
+#language-select .flag-en { background-image: url("screen/uk_flag.png"); }
+#language-select .flag-de { background-image: url("screen/germany_flag.png"); }
+#language-select .flag-ja { background-image: url("screen/japan_flag.png"); }
+#language-select .flag-zh { background-image: url("screen/china_flag.png"); }
+#language-select .flag-ko { background-image: url("screen/korea_flag.png"); }
 
 button {
   background-color: #2a2a2a;
@@ -553,6 +572,10 @@ td.arrow-down .flip-card-back::before {
   color: #00e676;
   text-decoration: none;
   font-weight: bold;
+}
+
+#footer-links img {
+  height: 24px;
 }
 
 #share-btn {
