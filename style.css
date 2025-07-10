@@ -35,8 +35,9 @@ h1 {
 }
 
 #hello-btn img {
-  height: 32px;
-  width: 32px;
+  /* enlarge the how-to button by 50% */
+  height: 48px;
+  width: 48px;
 }
 
 #main-logo {
@@ -56,11 +57,15 @@ h1 {
 }
 
 #language-select option {
+  /* ensure flag icons are visible */
   font-size: 0;
   padding-left: 1.6em;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center left;
+  display: block;
+  height: 1.7em;
+  line-height: 1.7em;
 }
 
 #language-select .flag-es { background-image: url("screen/spain_flag.png"); }
