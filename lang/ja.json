@@ -2,6 +2,7 @@
   "titulo": "鉱物を当てよう",
   "input_placeholder": "鉱物の名前を入力...",
   "boton_adivinar": "予想する",
+  "boton_compartir": "共有する",
   "propiedades": {
     "mineral": "鉱物",
     "grupo": "グループ",
@@ -19,7 +20,9 @@
     "mineral_era": "\u92fc\u7269\u306f:",
     "intentos": "\u8a66\u884c\u56de\u6570:",
     "intentos_restantes": "\u6b8b\u308a\u56de\u6570:",
-    "proximo_mineral": "\u6b21\u306e\u92fc\u7269\u307e\u3067:"
+    "proximo_mineral": "\u6b21\u306e\u92fc\u7269\u307e\u3067:",
+    "compartir_titulo": "\u4eca\u65e5\u306e\u30df\u30cd\u30e9\u30eb\u30c9\u30eb\u3092\u5f53\u3066\u305f\uFF01",
+    "compartir_invitar": "\u4eca\u3059\u3050\u904a\u307c\u3046: azaleadevs.github.io/mineraldle"
   },
   "valores": {
     "cuarzo": "石英",

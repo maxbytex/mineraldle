@@ -2,6 +2,7 @@
   "titulo": "Adivina el Mineral",
   "input_placeholder": "Escribe un mineral...",
   "boton_adivinar": "Adivinar",
+  "boton_compartir": "Compartir",
   "propiedades": {
     "mineral": "Mineral",
     "grupo": "Grupo",
@@ -19,7 +20,9 @@
     "mineral_era": "El mineral era:",
     "intentos": "Intentos:",
     "intentos_restantes": "Intentos restantes:",
-    "proximo_mineral": "Pr\u00f3ximo mineral en:"
+    "proximo_mineral": "Pr\u00f3ximo mineral en:",
+    "compartir_titulo": "\u00a1He adivinado el Mineraldle de hoy!",
+    "compartir_invitar": "Adiv\u00ednalo ahora en: azaleadevs.github.io/mineraldle"
   },
   "valores": {}
 }

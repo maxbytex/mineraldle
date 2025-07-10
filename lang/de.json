@@ -2,6 +2,7 @@
   "titulo": "Errate das Mineral",
   "input_placeholder": "Gib ein Mineral ein...",
   "boton_adivinar": "Raten",
+  "boton_compartir": "Teilen",
   "propiedades": {
     "mineral": "Mineral",
     "grupo": "Gruppe",
@@ -19,7 +20,9 @@
     "mineral_era": "Das Mineral war:",
     "intentos": "Versuche:",
     "intentos_restantes": "Verbleibende Versuche:",
-    "proximo_mineral": "Nächstes Mineral in:"
+    "proximo_mineral": "Nächstes Mineral in:",
+    "compartir_titulo": "Ich habe das heutige Mineraldle erraten!",
+    "compartir_invitar": "Rate jetzt auf: azaleadevs.github.io/mineraldle"
   },
   "valores": {
     "cuarzo": "Quarz",
