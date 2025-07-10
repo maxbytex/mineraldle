@@ -11,15 +11,16 @@
 <body>
   <img src="screen/main_logo.png" alt="Logo Minedle" id="main-logo">
   <div id="title-container">
-    <h1 id="titulo">Mineraldle</h1>
     <button id="hello-btn">?</button>
+    <select id="language-select">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="ja">🇯🇵 日本語</option>
+    </select>
   </div>
-
-  <div id="language-selector">
-    <button onclick="setIdioma('es')">🇪🇸</button>
-    <button onclick="setIdioma('en')">🇬🇧</button>
-    <button onclick="setIdioma('ja')">🇯🇵</button>
-  </div>
+  <h1 id="titulo">Mineraldle</h1>
 
   <div id="form-container">
     <div id="counter"><span id="counter-label"></span><span id="counter-value"></span></div>
@@ -60,15 +61,28 @@
       <p id="modal-mineral"></p>
       <img id="modal-img" src="" alt="">
       <p id="modal-intentos"></p>
+      <a id="share-btn" href="#" target="_blank" rel="noopener noreferrer">Share</a>
     </div>
   </div>
 
-  <div id="fireworks" class="hidden">🎆</div>
+  <div id="debug-modal" class="hidden">
+    <div class="modal-content">
+      <span id="close-debug" class="close">&times;</span>
+      <p id="debug-mineral"></p>
+      <div id="debug-timer"></div>
+    </div>
+  </div>
+
+  <div id="about-modal" class="hidden">
+    <div class="modal-content">
+      <span id="close-about" class="close">&times;</span>
+      <p>Hello World</p>
+    </div>
+  </div>
+
+  <canvas id="confetti-canvas" class="hidden"></canvas>
 
   <div id="footer-links">
-    <a href="#" id="twitter-link">Twitter</a>
-    <a href="#" id="kofi-link">Ko-fi</a>
-    <a href="#" id="about-link">About me</a>
-  </div>
-</body>
-</html>
+    <a href="https://x.com/AzaleaDevs" id="twitter-link" target="_blank">Twitter</a>
+    <a href="https://ko-fi.com/azaleadevs" id="kofi-link" target="_blank">Ko-fi</a>
+    <a href="#" id="about-link">About me</a>  </div></body></html>

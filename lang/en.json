@@ -2,6 +2,7 @@
   "titulo": "Guess the Mineral",
   "input_placeholder": "Type a mineral...",
   "boton_adivinar": "Guess",
+  "boton_compartir": "Share",
   "propiedades": {
     "mineral": "Mineral",
     "grupo": "Group",
@@ -19,7 +20,9 @@
     "mineral_era": "The mineral was:",
     "intentos": "Tries:",
     "intentos_restantes": "Tries left:",
-    "proximo_mineral": "Next mineral in:"
+    "proximo_mineral": "Next mineral in:",
+    "compartir_titulo": "I guessed today's Mineraldle!",
+    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle"
   },
   "valores": {
     "cuarzo": "Quartz",

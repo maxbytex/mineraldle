@@ -1,6 +1,11 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #1e1e1e;
+  background-image: url('screen/background_gems.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #ffffff;
   font-size: 18px;
   display: flex;
@@ -36,8 +41,11 @@ h1 {
   object-fit: contain;
 }
 
-#language-selector {
-  margin-bottom: 1em;
+#language-select {
+  margin-left: 0.5em;
+  padding: 0.3em 0.6em;
+  font-size: 1em;
+  border-radius: 6px;
 }
 
 button {
@@ -89,6 +97,7 @@ input {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  scroll-behavior: smooth;
 }
 
 /* NUEVO: Estilo general para la tabla de resultados */
@@ -461,24 +470,19 @@ td.arrow-down .flip-card-back::before {
   margin-bottom: 0.5em;
 }
 
-#fireworks {
+
+#confetti-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 5rem;
   pointer-events: none;
-  animation: fadeOut 2s forwards;
-  z-index: 1500;
+  z-index: 2500;
 }
 
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+#confetti-canvas.fade-in {
+  animation: fadeIn 0.5s forwards;
 }
 
 @keyframes fadeIn {
@@ -499,8 +503,36 @@ td.arrow-down .flip-card-back::before {
   z-index: 2000;
 }
 
+#debug-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+#about-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
 #modal.hidden,
-#fireworks.hidden {
+#confetti-canvas.hidden,
+#debug-modal.hidden,
+#about-modal.hidden {
   display: none;
 }
 
@@ -512,6 +544,17 @@ td.arrow-down .flip-card-back::before {
 
 #footer-links a {
   color: #00e676;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#share-btn {
+  margin-top: 1em;
+  display: none;
+  padding: 0.5em 1em;
+  background-color: #00e676;
+  color: #000;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
 }
@@ -621,6 +664,7 @@ th {
 @media (min-width: 1000px) {
   #contenedor-tabla {
     justify-content: center;
+    padding-left: 32px;
   }
 
   .tabla-resultados {
@@ -633,8 +677,5 @@ th {
     max-height: 100%;
     object-fit: contain;
   }
-
-
-}
 
 }

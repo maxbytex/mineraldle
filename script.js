@@ -17,7 +17,10 @@ function updateTimer() {
   const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
   const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
   const label = traducciones.mensajes?.proximo_mineral || 'Siguiente mineral en:';
-  document.getElementById('timer').innerText = `${label} ${h}:${m}:${s}`;
+  const texto = `${label} ${h}:${m}:${s}`;
+  document.getElementById('timer').innerText = texto;
+  const dbg = document.getElementById('debug-timer');
+  if (dbg) dbg.innerText = texto;
 }
 
 function updateCounter() {
@@ -45,13 +48,97 @@ function mostrarModal(gano) {
   document.getElementById("modal-img").alt = traducirValor(mineralDelDia.nombre);
   document.getElementById("modal-intentos").innerText =
     (traducciones.mensajes?.intentos || "Intentos:") + " " + intentos;
+  const shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    shareBtn.style.display = gano ? "block" : "none";
+    shareBtn.innerText = traducciones.boton_compartir || "Share";
+  }
   modal.classList.remove("hidden");
+  if (gano) confettiExplosion();
 }
 
-function mostrarFuegos() {
-  const fw = document.getElementById("fireworks");
-  fw.classList.remove("hidden");
-  setTimeout(() => fw.classList.add("hidden"), 2000);
+function confettiExplosion() {
+  const canvas = document.getElementById('confetti-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.classList.remove('hidden');
+  canvas.classList.add('fade-in');
+  canvas.style.opacity = '1';
+
+  const particles = [];
+
+  function createExplosion(x, y) {
+    for (let i = 0; i < 150; i++) {
+      const life = 100 + Math.random() * 20;
+      particles.push({
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 15,
+        vy: (Math.random() - 0.7) * 15,
+        size: Math.random() * 6 + 4,
+        color: `hsl(${Math.random() * 360},100%,50%)`,
+        life,
+        ttl: life
+      });
+    }
+  }
+
+  let explosions = 0;
+  function triggerExplosion() {
+    createExplosion(
+      canvas.width / 2,
+      canvas.height / 2
+    );
+    explosions++;
+    if (explosions < 5) {
+      setTimeout(triggerExplosion, 1000);
+    }
+  }
+  triggerExplosion();
+
+  function fadeOutCanvas() {
+    let opacity = 1;
+    function step() {
+      opacity -= 0.05;
+      canvas.style.opacity = opacity;
+      if (opacity <= 0) {
+        canvas.style.opacity = '';
+        canvas.classList.add('hidden');
+      } else {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.2;
+      p.life--;
+      ctx.globalAlpha = p.life / p.ttl;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+      ctx.globalAlpha = 1;
+    });
+    for (let i = particles.length - 1; i >= 0; i--) {
+      if (particles[i].life <= 0 || particles[i].y > canvas.height) {
+        particles.splice(i, 1);
+      }
+    }
+    if (particles.length) {
+      requestAnimationFrame(draw);
+    } else {
+      canvas.classList.remove('fade-in');
+      fadeOutCanvas();
+    }
+  }
+
+  requestAnimationFrame(draw);
 }
 
 function traducirValor(valor) {
@@ -78,6 +165,10 @@ function aplicarTraducciones() {
   document.getElementById("titulo").innerText = traducciones.titulo || "Mineraldle";
   document.getElementById("inputMineral").placeholder = traducciones.input_placeholder || "Escribe un mineral...";
   document.getElementById("btnAdivinar").innerText = traducciones.boton_adivinar || "Adivinar";
+  const shareBtn = document.getElementById("share-btn");
+  if (shareBtn) {
+    shareBtn.innerText = traducciones.boton_compartir || "Share";
+  }
   if (traducciones.propiedades) {
     document.getElementById("th-mineral").innerText = traducciones.propiedades.mineral || "Mineral";
     document.getElementById("th-grupo").innerText = traducciones.propiedades.grupo || "Grupo";
@@ -99,6 +190,11 @@ function aplicarTraducciones() {
 document.addEventListener("DOMContentLoaded", () => {
   const guardado = localStorage.getItem("idioma") || "es";
   setIdioma(guardado);
+  const langSelect = document.getElementById('language-select');
+  if (langSelect) {
+    langSelect.value = guardado;
+    langSelect.addEventListener('change', e => setIdioma(e.target.value));
+  }
   updateCounter();
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
@@ -119,7 +215,41 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const helloBtn = document.getElementById("hello-btn");
   if (helloBtn) {
-    helloBtn.addEventListener("click", () => alert("Hello World"));
+    helloBtn.addEventListener("click", () => {
+      const dbgModal = document.getElementById("debug-modal");
+      const dbgMineral = document.getElementById("debug-mineral");
+      if (dbgModal && dbgMineral && mineralDelDia) {
+        dbgMineral.innerText =
+          (traducciones.mensajes?.mineral_era || "El mineral era:") +
+          " " +
+          traducirValor(mineralDelDia.nombre);
+        dbgModal.classList.remove("hidden");
+      }
+    });
+  }
+  const closeDbg = document.getElementById("close-debug");
+  if (closeDbg) {
+    closeDbg.addEventListener("click", () => {
+      document.getElementById("debug-modal").classList.add("hidden");
+    });
+  }
+
+  const aboutLink = document.getElementById('about-link');
+  const aboutModal = document.getElementById('about-modal');
+  const closeAbout = document.getElementById('close-about');
+  if (aboutLink && aboutModal && closeAbout) {
+    aboutLink.addEventListener('click', e => {
+      e.preventDefault();
+      aboutModal.classList.remove('hidden');
+    });
+    closeAbout.addEventListener('click', () => {
+      aboutModal.classList.add('hidden');
+    });
+  }
+
+  const shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', compartirEnTwitter);
   }
 });
 
@@ -255,6 +385,7 @@ fila.appendChild(
 
   const cuerpo = document.getElementById("tabla-cuerpo");
   cuerpo.insertBefore(fila, cuerpo.firstChild);
+  document.getElementById('contenedor-tabla').scrollLeft = 0;
   ajustarTextoCeldas();
   await revealRow(fila);
   ajustarTextoCeldas();
@@ -264,8 +395,7 @@ fila.appendChild(
     juegoTerminado = true;
     deshabilitarJuego();
     if (gano) {
-      mostrarFuegos();
-      setTimeout(() => mostrarModal(true), 2000);
+      mostrarModal(true);
     } else {
       mostrarModal(false);
     }
@@ -489,4 +619,39 @@ function actualizarModalTraducciones() {
   document.getElementById('modal-img').alt = traducirValor(mineralDelDia.nombre);
   document.getElementById('modal-intentos').innerText =
     (traducciones.mensajes?.intentos || 'Intentos:') + ' ' + intentos;
+  const shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.innerText = traducciones.boton_compartir || 'Share';
+  }
+}
+
+function generarEmojisResultado() {
+  const filas = Array.from(document.querySelectorAll('#tabla-cuerpo tr')).reverse();
+  const numeros = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
+  return filas.map((fila, idx) => {
+    const celdas = fila.querySelectorAll('.flip-card');
+    let linea = numeros[idx + 1] || '';
+    for (let i = 1; i < celdas.length; i++) {
+      const back = celdas[i].querySelector('.flip-card-back');
+      if (back.classList.contains('verde')) linea += '🟩';
+      else if (back.classList.contains('amarillo')) linea += '🟨';
+      else linea += '🟥';
+    }
+    return linea;
+  }).join('\n');
+}
+
+function compartirEnTwitter(e) {
+  if (e) e.preventDefault();
+  const titulo = traducciones.mensajes?.compartir_titulo || "I guessed today's Mineraldle!";
+  const invitacion = traducciones.mensajes?.compartir_invitar || 'Play now at: azaleadevs.github.io/mineraldle';
+  const grid = generarEmojisResultado();
+  const texto = `${titulo}\n${grid}\n${invitacion}`;
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(texto)}`;
+  const enlace = document.getElementById('share-btn');
+  if (enlace) enlace.href = url;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(texto).catch(() => {});
+  }
+  window.open(url, '_blank', 'noopener');
 }
