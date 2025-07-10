@@ -418,6 +418,13 @@ td.arrow-down .flip-card-back::before {
   h1 {
     font-size: 2em;
   }
+  #titulo {
+    white-space: nowrap;
+    font-size: 1.8em;
+  }
+  #contenedor-tabla {
+    justify-content: flex-start;
+  }
   /* Make result cells bigger on small screens */
   .tabla-resultados thead th,
   .tabla-resultados td,
