@@ -9,6 +9,19 @@ let cabeceraMostrada = false;
 let ultimoResultado = null;
 let timerInterval = null;
 
+const flagPaths = {
+  es: 'screen/spain_flag.png',
+  eu: 'screen/euskera_flag.png',
+  gl: 'screen/galicia_flag.png',
+  ca: 'screen/catalonia_flag.png',
+  fr: 'screen/france_flag.png',
+  en: 'screen/uk_flag.png',
+  de: 'screen/germany_flag.png',
+  ja: 'screen/japan_flag.png',
+  zh: 'screen/china_flag.png',
+  ko: 'screen/korea_flag.png'
+};
+
 function updateTimer() {
   const now = new Date();
   const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
@@ -193,7 +206,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const langSelect = document.getElementById('language-select');
   if (langSelect) {
     langSelect.value = guardado;
-    langSelect.addEventListener('change', e => setIdioma(e.target.value));
+    updateSelectFlag(langSelect.value);
+    langSelect.addEventListener('change', e => {
+      updateSelectFlag(e.target.value);
+      setIdioma(e.target.value);
+    });
   }
   updateCounter();
   updateTimer();
@@ -654,4 +671,16 @@ function compartirEnTwitter(e) {
     navigator.clipboard.writeText(texto).catch(() => {});
   }
   window.open(url, '_blank', 'noopener');
+}
+
+function updateSelectFlag(lang) {
+  const select = document.getElementById('language-select');
+  if (!select) return;
+  const path = flagPaths[lang];
+  if (path) {
+    select.style.backgroundImage = `url(${path})`;
+    select.style.backgroundRepeat = 'no-repeat';
+    select.style.backgroundPosition = 'center left';
+    select.style.paddingLeft = '1.6em';
+  }
 }
