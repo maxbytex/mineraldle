@@ -546,6 +546,12 @@ td.arrow-down .flip-card-back::before {
 #share-btn {
   margin-top: 1em;
   display: none;
+  padding: 0.5em 1em;
+  background-color: #00e676;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .modal-content {
