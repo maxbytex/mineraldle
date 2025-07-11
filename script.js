@@ -588,6 +588,8 @@ function ajustarTextoCeldas() {
   };
 
   const ajustar = el => {
+    // Reset size so computations start from the CSS-defined value
+    el.style.fontSize = '';
     const comp = window.getComputedStyle(el);
     let size = parseFloat(comp.fontSize);
     const fontBase = `${comp.fontStyle} ${comp.fontVariant} ${comp.fontWeight} `;
