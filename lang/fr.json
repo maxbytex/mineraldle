@@ -22,7 +22,15 @@
     "intentos_restantes": "Essais restants :",
     "proximo_mineral": "Prochain minéral dans :",
     "compartir_titulo": "J'ai deviné le Mineraldle d'aujourd'hui !",
-    "compartir_invitar": "Devine-le maintenant sur : azaleadevs.github.io/mineraldle"
+    "compartir_invitar": "Devine-le maintenant sur : azaleadevs.github.io/mineraldle",
+    "como_jugar_titulo": "Comment jouer :",
+    "como_jugar_intro": "Le jeu consiste à deviner le minéral. Chaque jour un nouveau minéral apparaît et se réinitialise à 00:00 heure GMT +2.",
+    "como_jugar_numero": "Il existe actuellement un total de {N} minéraux possibles. Utilisez les indices visuels basés sur les caractéristiques propres des minéraux jusqu'à trouver le bon.",
+    "leyenda_titulo": "Légende des couleurs :",
+    "leyenda_rojo": "\ud83d\udd34 Rouge : La caractéristique ne correspond pas au minéral correct.",
+    "leyenda_amarillo": "\ud83d\udfe8 Jaune : Cette caractéristique partage certains types avec le minéral correct. Pour les valeurs numériques comme la dureté ou la densité, cela signifie que vous êtes proche de la bonne valeur. Les flèches \u2b06\ufe0f et \u2b07\ufe0f indiquent si la valeur correcte est supérieure ou inférieure.",
+    "leyenda_verde": "\ud83d\udfe9 Vert : La caractéristique partage le type avec le bon minéral.",
+    "debug_titulo": "Debug - Le minéral du jour est :"
   },
   "valores": {
     "cuarzo": "Quartz",

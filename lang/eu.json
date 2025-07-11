@@ -22,7 +22,15 @@
     "intentos_restantes": "Tries left:",
     "proximo_mineral": "Next mineral in:",
     "compartir_titulo": "I guessed today's Mineraldle!",
-    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle"
+    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle",
+    "como_jugar_titulo": "Nola jokatu:",
+    "como_jugar_intro": "Jokoa minerala asmatzean datza. Egunero mineral berri bat dago, 00:00 GMT+2etan berrabiarazten dena.",
+    "como_jugar_numero": "Gaur egun guztira {N} mineral posible daude. Mineralei buruzko ezaugarrien oinarritutako ikusizko pistak erabili behar dituzu zuzena aurkitu arte.",
+    "leyenda_titulo": "Koloreen legenda:",
+    "leyenda_rojo": "\ud83d\udd34 Gorria: Ezaugarria ez dator bat mineral egokiarekin.",
+    "leyenda_amarillo": "\ud83d\udfe8 Horia: Ezaugarri honek mota batzuk partekatzen ditu mineral egokiarekin. Balio numerikoa denean, adibidez gogortasuna edo dentsitatea, balio zuzenetik gertu zaudela esan nahi du. Goi eta behera geziak \u2b06\ufe0f eta \u2b07\ufe0f balioa handiagoa edo txikiagoa den adierazten dute.",
+    "leyenda_verde": "\ud83d\udfe9 Berdea: Ezaugarriak mota bera du mineral egokiarekin.",
+    "debug_titulo": "Debug - Gaurko minerala:"
   },
   "valores": {
     "cuarzo": "Quartz",

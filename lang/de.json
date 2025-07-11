@@ -22,7 +22,15 @@
     "intentos_restantes": "Verbleibende Versuche:",
     "proximo_mineral": "Nächstes Mineral in:",
     "compartir_titulo": "Ich habe das heutige Mineraldle erraten!",
-    "compartir_invitar": "Rate jetzt auf: azaleadevs.github.io/mineraldle"
+    "compartir_invitar": "Rate jetzt auf: azaleadevs.github.io/mineraldle",
+    "como_jugar_titulo": "So spielst du:",
+    "como_jugar_intro": "Das Spiel besteht darin, das Mineral zu erraten. Jeden Tag gibt es ein neues Mineral, das um 00:00 Uhr GMT +2 zur\u00fcckgesetzt wird.",
+    "como_jugar_numero": "Aktuell gibt es insgesamt {N} m\u00f6gliche Minerale. Nutze die visuellen Hinweise, die auf den Eigenschaften der Minerale basieren, bis du das richtige gefunden hast.",
+    "leyenda_titulo": "Farblegende:",
+    "leyenda_rojo": "\ud83d\udd34 Rot: Die Eigenschaft stimmt nicht mit dem richtigen Mineral \u00fcberein.",
+    "leyenda_amarillo": "\ud83d\udfe8 Gelb: Diese Eigenschaft teilt einige Typen mit dem richtigen Mineral. Bei numerischen Werten wie H\u00e4rte oder Dichte bedeutet dies, dass du nah am korrekten Wert bist. Die Pfeile \u2b06\ufe0f und \u2b07\ufe0f zeigen an, ob der korrekte Wert h\u00f6her oder niedriger ist.",
+    "leyenda_verde": "\ud83d\udfe9 Gr\u00fcn: Die Eigenschaft hat denselben Typ wie das richtige Mineral.",
+    "debug_titulo": "Debug - Das Mineral des Tages ist:"
   },
   "valores": {
     "cuarzo": "Quarz",
