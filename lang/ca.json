@@ -22,7 +22,15 @@
     "intentos_restantes": "Tries left:",
     "proximo_mineral": "Next mineral in:",
     "compartir_titulo": "I guessed today's Mineraldle!",
-    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle"
+    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle",
+    "como_jugar_titulo": "Com jugar:",
+    "como_jugar_intro": "El joc consisteix a endevinar el mineral. Cada dia hi ha un mineral nou que es reinicia a les 00:00 hora GMT +2.",
+    "como_jugar_numero": "Actualment hi ha un total de {N} minerals possibles. Haur\u00e0s d'utilitzar les pistes visuals basades en les caracter\u00edstiques pr\u00f2pies dels minerals fins a trobar el correcte.",
+    "leyenda_titulo": "Llegenda de colors:",
+    "leyenda_rojo": "\ud83d\udd34 Vermell: La caracter\u00edstica no coincideix amb el mineral correcte.",
+    "leyenda_amarillo": "\ud83d\udfe8 Groc: Aquesta caracter\u00edstica comparteix algun dels tipus amb el mineral correcte. En el cas de ser un valor num\u00e8ric com duresa o densitat significa que est\u00e0s a prop del valor correcte. Les fletxes de direcci\u00f3 \u2b06\ufe0f i \u2b07\ufe0f indiquen si el valor correcte \u00e9s major o menor que el mineral que has escollit.",
+    "leyenda_verde": "\ud83d\udfe9 Verd: La caracter\u00edstica comparteix tipus amb el mineral correcte.",
+    "debug_titulo": "Debug - El mineral d'avui \u00e9s:"
   },
   "valores": {
     "cuarzo": "Quartz",

@@ -235,11 +235,42 @@ document.addEventListener("DOMContentLoaded", () => {
     helloBtn.addEventListener("click", () => {
       const dbgModal = document.getElementById("debug-modal");
       const dbgMineral = document.getElementById("debug-mineral");
-      if (dbgModal && dbgMineral && mineralDelDia) {
+      const howtoTitle = document.getElementById('howto-title');
+      const howtoMain = document.getElementById('howto-main');
+      const howtoCount = document.getElementById('howto-count');
+      const legendTitle = document.getElementById('legend-title');
+      const legendRed = document.getElementById('legend-red');
+      const legendYellow = document.getElementById('legend-yellow');
+      const legendGreen = document.getElementById('legend-green');
+      if (
+        dbgModal && dbgMineral && mineralDelDia &&
+        howtoTitle && howtoMain && howtoCount &&
+        legendTitle && legendRed && legendYellow && legendGreen
+      ) {
+        howtoTitle.innerText =
+          traducciones.mensajes?.como_jugar_titulo || 'Cómo jugar:';
+        const timerText = document.getElementById('timer').innerText;
+        const intro = traducciones.mensajes?.como_jugar_intro ||
+          'El juego consiste en adivinar el mineral. Cada día hay un mineral nuevo que se reinicia a las 00:00 hora GMT +2.';
+        howtoMain.innerText = `${intro} ${timerText}`;
+        const total = minerales.length;
+        const numTxt = (traducciones.mensajes?.como_jugar_numero ||
+          'Actualmente existen un total de {N} minerales posibles. Deberás utilizar las pistas visuales basadas en las características propias de los minerales hasta encontrar el correcto.'
+        ).replace('{N}', total);
+        howtoCount.innerText = numTxt;
+        legendTitle.innerText =
+          traducciones.mensajes?.leyenda_titulo || 'Leyenda de colores:';
+        legendRed.innerText =
+          traducciones.mensajes?.leyenda_rojo || '🟥 Rojo: La característica no coincide con el mineral correcto.';
+        legendYellow.innerText =
+          traducciones.mensajes?.leyenda_amarillo ||
+          '🟨 Amarillo: Está característica comparte alguno de los tipos con el mineral correcto. En el caso de ser un valor numérico como dureza o densidad significa que estás cerca del valor correcto. Las flechas de dirección ⬆️ y ⬇️ indican si el valor correcto es mayor o menor que el mineral que has escogido.';
+        legendGreen.innerText =
+          traducciones.mensajes?.leyenda_verde || '🟩 Verde: La característica comparte tipo con el mineral correcto.';
         dbgMineral.innerText =
-          (traducciones.mensajes?.mineral_era || "El mineral era:") +
-          " " +
-          traducirValor(mineralDelDia.nombre);
+          (traducciones.mensajes?.debug_titulo || 'Debug - El mineral de hoy es:') +
+          ' ' + traducirValor(mineralDelDia.nombre);
+        updateTimer();
         dbgModal.classList.remove("hidden");
       }
     });

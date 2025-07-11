@@ -22,7 +22,15 @@
     "intentos_restantes": "Tries left:",
     "proximo_mineral": "Next mineral in:",
     "compartir_titulo": "I guessed today's Mineraldle!",
-    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle"
+    "compartir_invitar": "Play now at: azaleadevs.github.io/mineraldle",
+    "como_jugar_titulo": "How to play:",
+    "como_jugar_intro": "The goal is to guess the mineral. Every day there's a new mineral that resets at 00:00 GMT +2.",
+    "como_jugar_numero": "There are currently {N} possible minerals. Use the visual hints based on each mineral's properties until you find the correct one.",
+    "leyenda_titulo": "Color legend:",
+    "leyenda_rojo": "\ud83d\udd34 Red: The property doesn't match the correct mineral.",
+    "leyenda_amarillo": "\ud83d\udfe8 Yellow: This property shares some types with the correct mineral. For numeric values like hardness or density it means you're close. The arrows \u2b06\ufe0f and \u2b07\ufe0f indicate if the correct value is higher or lower.",
+    "leyenda_verde": "\ud83d\udfe9 Green: The property type matches the correct mineral.",
+    "debug_titulo": "Debug - Today's mineral is:"
   },
   "valores": {
     "cuarzo": "Quartz",
