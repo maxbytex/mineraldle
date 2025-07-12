@@ -11,15 +11,8 @@ let timerInterval = null;
 
 const flagPaths = {
   es: 'screen/spain_flag.png',
-  eu: 'screen/euskera_flag.png',
-  gl: 'screen/galicia_flag.png',
   ca: 'screen/catalonia_flag.png',
-  fr: 'screen/france_flag.png',
-  en: 'screen/uk_flag.png',
-  de: 'screen/germany_flag.png',
-  ja: 'screen/japan_flag.png',
-  zh: 'screen/china_flag.png',
-  ko: 'screen/korea_flag.png'
+  en: 'screen/uk_flag.png'
 };
 
 function updateTimer() {
@@ -165,12 +158,18 @@ function traducirLista(arr) {
 
 function setIdioma(idioma) {
   fetch(`lang/${idioma}.json`)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('not found');
+      return res.json();
+    })
     .then(data => {
       traducciones = data;
       idiomaActual = idioma;
       localStorage.setItem("idioma", idioma);
       aplicarTraducciones();
+    })
+    .catch(() => {
+      if (idioma !== 'es') setIdioma('es');
     });
 }
 
@@ -201,7 +200,9 @@ function aplicarTraducciones() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const guardado = localStorage.getItem("idioma") || "es";
+  const almacenado = localStorage.getItem("idioma");
+  const disponibles = Object.keys(flagPaths);
+  const guardado = disponibles.includes(almacenado) ? almacenado : "es";
   setIdioma(guardado);
   const langSelect = document.getElementById('language-select');
   if (langSelect) {
