@@ -11,7 +11,6 @@ let timerInterval = null;
 
 const flagPaths = {
   es: 'screen/spain_flag.png',
-  ca: 'screen/catalonia_flag.png',
   en: 'screen/uk_flag.png'
 };
 
