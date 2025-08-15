@@ -35,9 +35,9 @@ h1 {
 }
 
 #hello-btn img {
-  /* enlarge the how-to button by 50% */
-  height: 48px;
-  width: 48px;
+  /* slightly larger how-to icon for better visibility */
+  height: 64px;
+  width: 64px;
 }
 
 #main-logo {
