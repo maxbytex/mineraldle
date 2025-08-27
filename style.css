@@ -17,8 +17,8 @@ body {
 }
 
 .test{
-   background-color: red !important;
-   font-size: 50px;
+   background-color: red ;
+   font-size: 500px !important;
 }
 
 h1 {
