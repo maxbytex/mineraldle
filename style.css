@@ -17,7 +17,7 @@ body {
 }
 
 .test{
-   background-color: red ;
+   background-color: green ;
    font-size: 500px !important;
 }
 
@@ -662,7 +662,7 @@ td {
 }
 
 th {
-  font-size: 1.2em; /* más grande que el 0.95em por defecto */
+  font-size: 5em; /* más grande que el 0.95em por defecto */
   font-weight: bold;
   padding: 0.75em;
   white-space: normal;
@@ -673,7 +673,7 @@ th {
 
 @media (min-width: 800px) {
   th {
-    font-size: 1.4em;
+    font-size: 10em;
   }
 }
 
